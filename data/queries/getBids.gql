@@ -1,0 +1,35 @@
+query getBids($limit: Int, $skip: Int, $slug: String) {
+  bidsConnection(
+    orderBy: createdAt_DESC
+    first: $limit
+    skip: $skip
+    where: { author: { slug_contains: $slug } }
+  ) {
+    edges {
+      node {
+        id
+        price
+        title
+        slug
+        image {
+          url
+          thumbnail: url(
+            transformation: {
+              image: { resize: { width: 202, height: 224, fit: crop } }
+              document: { output: { format: webp } }
+            }
+          )
+          blurDataURL: url(
+            transformation: {
+              image: { resize: { width: 10, height: 10, fit: crop } }
+              document: { output: { format: webp } }
+            }
+          )
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+    }
+  }
+}

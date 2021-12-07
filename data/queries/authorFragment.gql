@@ -1,0 +1,12 @@
+fragment author on Author {
+  id
+  name
+  image {
+    thumbnail: url(
+      transformation: {
+        image: { resize: { width: 64, height: 64, fit: crop } }
+        document: { output: { format: webp } }
+      }
+    )
+  }
+}
