@@ -3,10 +3,15 @@ require('dotenv').config()
 
 module.exports = {
   reactStrictMode: true,
-  serverRuntimeConfig: {
+  publicRuntimeConfig: {
     SERVER_API_ENDPOINT: process.env.SERVER_API_ENDPOINT,
   },
   images: {
-    domains: [],
+    domains: [
+      'via.placeholder.com',
+      'bit.ly',
+      'cdn.pixabay.com',
+      'media.graphcms.com',
+    ],
   },
 }

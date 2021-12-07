@@ -1,9 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "concurrently \"next dev\" \"yarn run gql:gen:watch\"",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "gql:gen": "graphql-codegen",
+    "gql:gen:watch": "graphql-codegen --watch"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
@@ -13,12 +15,19 @@
     "@emotion/styled": "11.1.5",
     "dotenv": "^10.0.0",
     "framer-motion": "^4.0.3",
+    "graphql": "^16.0.1",
+    "graphql-request": "^3.7.0",
     "next": "11.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.3.0",
+    "@graphql-codegen/near-operation-file-preset": "^2.2.2",
+    "@graphql-codegen/typescript": "^2.4.1",
+    "@graphql-codegen/typescript-graphql-request": "^4.3.2",
+    "@graphql-codegen/typescript-operations": "^2.2.1",
     "@types/node": "^14.6.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",

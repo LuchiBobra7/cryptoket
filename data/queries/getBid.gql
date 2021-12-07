@@ -1,0 +1,25 @@
+query getBid($slug: String) {
+  bid(where: { slug: $slug }) {
+    id
+    price
+    title
+    image {
+      url
+      thumbnail: url(
+        transformation: {
+          image: { resize: { width: 440, height: 440, fit: crop } }
+          document: { output: { format: webp } }
+        }
+      )
+      blurDataURL: url(
+        transformation: {
+          image: { resize: { width: 10, height: 10, fit: crop } }
+          document: { output: { format: webp } }
+        }
+      )
+    }
+    author {
+      ...author
+    }
+  }
+}

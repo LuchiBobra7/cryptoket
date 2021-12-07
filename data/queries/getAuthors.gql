@@ -1,0 +1,12 @@
+query getAuthors($limit: Int) {
+  authorsConnection(orderBy: income_DESC, first: $limit) {
+    edges {
+      node {
+        ...author
+        isVerified
+        income
+        slug
+      }
+    }
+  }
+}
