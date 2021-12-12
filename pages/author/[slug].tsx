@@ -13,6 +13,7 @@ import {
 import { BsChevronDown } from 'react-icons/bs'
 import SearchBar from '@/components/search-bar'
 import Image from '@/components/image'
+import EmptyData from '@/components/empty-data'
 import ErrorMessage from '@/components/error-message'
 import BidList from '@/components/bids/bid-list'
 import { getAuthor, getAuthors, getBids } from 'data/index'
@@ -44,12 +45,14 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
       <Box
         as="header"
         position="relative"
-        bgColor="gray.1"
+        bgColor="blue.800"
         height={300}
         width="100%"
       >
         <Image
-          src="/assets/images/author-page-bg.png"
+          src={authorDetails.bgImage?.thumbnail}
+          placeholder="blur"
+          blurDataURL={authorDetails.bgImage?.blurDataURL}
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -89,7 +92,7 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
           <BidList w="full" items={bids.edges} />
         </Container>
       ) : (
-        <Heading fontSize="2xl">Nothing here</Heading>
+        <EmptyData />
       )}
     </>
   )

@@ -19,7 +19,7 @@ const SearchBar = ({ ...props }) => {
           color={iconColor}
           children={<Icon as={RiSearchLine} />}
         />
-        <Input variant="outline" placeholder="Search for sounds, tracks" />
+        <Input variant="outline" placeholder="Search" />
       </InputGroup>
     </HStack>
   )

@@ -33,6 +33,7 @@ export type Aggregate = {
 /** Asset system model */
 export type Asset = Node & {
   __typename?: 'Asset';
+  bgImageAuthor: Array<Author>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -74,6 +75,19 @@ export type Asset = Node & {
   url: Scalars['String'];
   /** The file width */
   width?: Maybe<Scalars['Float']>;
+};
+
+
+/** Asset system model */
+export type AssetbgImageAuthorArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<AuthorOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<AuthorWhereInput>;
 };
 
 
@@ -197,6 +211,7 @@ export type AssetConnection = {
 };
 
 export type AssetCreateInput = {
+  bgImageAuthor?: InputMaybe<AuthorCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   fileName: Scalars['String'];
   handle: Scalars['String'];
@@ -266,6 +281,9 @@ export type AssetManyWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  bgImageAuthor_every?: InputMaybe<AuthorWhereInput>;
+  bgImageAuthor_none?: InputMaybe<AuthorWhereInput>;
+  bgImageAuthor_some?: InputMaybe<AuthorWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -376,6 +394,7 @@ export type AssetTransformationInput = {
 };
 
 export type AssetUpdateInput = {
+  bgImageAuthor?: InputMaybe<AuthorUpdateManyInlineInput>;
   fileName?: InputMaybe<Scalars['String']>;
   handle?: InputMaybe<Scalars['String']>;
   height?: InputMaybe<Scalars['Float']>;
@@ -516,6 +535,9 @@ export type AssetWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  bgImageAuthor_every?: InputMaybe<AuthorWhereInput>;
+  bgImageAuthor_none?: InputMaybe<AuthorWhereInput>;
+  bgImageAuthor_some?: InputMaybe<AuthorWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -703,6 +725,7 @@ export type AssetWhereUniqueInput = {
 
 export type Author = Node & {
   __typename?: 'Author';
+  bgImage?: Maybe<Asset>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -729,6 +752,11 @@ export type Author = Node & {
   updatedAt: Scalars['DateTime'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+};
+
+
+export type AuthorbgImageArgs = {
+  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -794,6 +822,7 @@ export type AuthorConnection = {
 };
 
 export type AuthorCreateInput = {
+  bgImage?: InputMaybe<AssetCreateOneInlineInput>;
   ckwuqcu6n5lz601yy8iioa0f0?: InputMaybe<BidCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   image?: InputMaybe<AssetCreateOneInlineInput>;
@@ -837,6 +866,7 @@ export type AuthorManyWhereInput = {
   OR?: InputMaybe<Array<AuthorWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  bgImage?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -986,6 +1016,7 @@ export enum AuthorOrderByInput {
 }
 
 export type AuthorUpdateInput = {
+  bgImage?: InputMaybe<AssetUpdateOneInlineInput>;
   ckwuqcu6n5lz601yy8iioa0f0?: InputMaybe<BidUpdateManyInlineInput>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
   income?: InputMaybe<Scalars['Float']>;
@@ -1069,6 +1100,7 @@ export type AuthorWhereInput = {
   OR?: InputMaybe<Array<AuthorWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  bgImage?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
