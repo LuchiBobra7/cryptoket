@@ -13,6 +13,7 @@ const AuthorList = ({ items }: Props) => {
       gap={7}
       overflowX="auto"
       mr={{ base: -6, lg: 0 }}
+      pb={4}
     >
       {items?.map(({ node }, i) => (
         <AuthorItem key={node.id} i={i} item={node} />
