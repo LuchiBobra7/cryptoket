@@ -1,19 +1,27 @@
-import { FC } from 'react'
-import { VStack, Box, Container } from '@chakra-ui/react'
-import Header from './header'
-import Footer from './footer'
+import { PropsWithChildren } from 'react'
+import { VStack, Box } from '@chakra-ui/react'
+import Head from '@/components/layout/head'
+import Loader from '@/components/loader'
+import Header from '@/components/layout/header'
+import Footer from '@/components/layout/footer'
 
-const Layout: FC = ({ children }) => {
+type Props = PropsWithChildren<{
+  isRouteChanging: boolean
+  loadingKey?: number
+}>
+
+const Layout = ({ children, isRouteChanging, loadingKey }: Props) => {
   return (
     <VStack
       flex={1}
       spacing={0}
       alignItems="stretch"
       w="full"
-      minH={{ base: 'auto', md: '100vh' }}
+      minH={{ md: '100vh' }}
     >
+      <Head />
       <Header />
-
+      <Loader isRouteChanging={isRouteChanging} key={loadingKey} />
       <Box as="main" flex={1} w="full">
         {children}
       </Box>
