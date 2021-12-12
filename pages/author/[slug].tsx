@@ -50,7 +50,7 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
         width="100%"
       >
         <Image
-          src={authorDetails.bgImage?.thumbnail}
+          src={authorDetails.bgImage?.thumbnail || ''}
           placeholder="blur"
           blurDataURL={authorDetails.bgImage?.blurDataURL}
           layout="fill"
