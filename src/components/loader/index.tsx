@@ -17,9 +17,11 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({
       <Box
         value={(-1 + progress) * 100}
         background="pink.500"
+        position="relative"
         top={0}
         left={0}
         h={0.5}
+        mt={-0.5}
         width="full"
         marginLeft={`${(-1 + progress) * 100}%`}
         transition={`margin-left ${animationDuration}ms linear;`}
