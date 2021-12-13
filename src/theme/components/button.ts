@@ -14,9 +14,6 @@ const Button = {
       bg: 'redLinear',
       color: 'white',
     },
-    outline: {
-      color: 'pink.500',
-    },
   },
 }
 

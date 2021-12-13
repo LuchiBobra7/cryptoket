@@ -7,15 +7,30 @@ import {
   Heading,
   Text,
   Box,
+  Flex,
   Button,
   AspectRatio,
-  useColorModeValue,
   Tabs,
   TabList,
   TabPanels,
   Tab,
   TabPanel,
   Avatar,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  useDisclosure,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import SectionTitle from '@/components/section-title'
 import Image from '@/components/image'
@@ -25,6 +40,7 @@ import { ROUTES } from '@/constants/routes'
 import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
 import { BIDS_PER_PAGE } from '@/constants/items'
 import { BidDetailsProps } from '@/types/bids'
+import CheckoutModal from '@/components/checkout-modal'
 
 type Props = {
   bidDetails: BidDetailsProps['bid']
@@ -32,12 +48,15 @@ type Props = {
 
 const BidDetailsPage = ({ bidDetails }: Props) => {
   const { isFallback } = useRouter()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   if (isFallback) {
     return 'Loading...'
   }
   if (!bidDetails) {
     return <ErrorMessage />
   }
+  const modalBorderColor = useColorModeValue('blackAlpha.100', 'gray.4')
   return (
     <Container alignItems="flex-start">
       <SimpleGrid columns={{ md: 2 }} spacing={0}>
@@ -79,10 +98,9 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
             </Text>
           </Text>
           {bidDetails.author && (
-            <HStack>
+            <HStack spacing={3}>
               <Avatar
                 size="lg"
-                mb={2}
                 src={bidDetails.author.image?.thumbnail || ''}
               />
               <Heading fontSize="md">{bidDetails.author.name}</Heading>
@@ -116,9 +134,14 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
           </Tabs>
 
           <HStack spacing={4} w="full">
-            <Button variant="primary" rounded="xl" flex={1}>
+            <Button variant="primary" rounded="xl" flex={1} onClick={onOpen}>
               Buy for {bidDetails.price} ETH
             </Button>
+            <CheckoutModal
+              bidDetails={bidDetails}
+              isOpen={isOpen}
+              onClose={onClose}
+            />
             <Button variant="outline" colorScheme="pink" rounded="xl" flex={1}>
               Make Offer
             </Button>
