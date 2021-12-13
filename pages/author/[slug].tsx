@@ -22,6 +22,7 @@ import { AUTHOR_IMAGE_SIZE } from '@/constants/images'
 import { AUTHORS_PER_PAGE, BIDS_PER_PAGE } from '@/constants/items'
 import { AuthorDetailsProps } from '@/types/authors'
 import { BidListProps } from '@/types/bids'
+import { ROUTES } from '@/constants/routes'
 
 type Props = {
   authorDetails: AuthorDetailsProps['author']
@@ -101,7 +102,7 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
 export async function getStaticPaths() {
   const authors = (await getAuthors(AUTHORS_PER_PAGE)) || []
   return {
-    paths: authors.edges.map(({ node }) => `/author/${node.slug}`),
+    paths: authors.edges.map(({ node }) => `${ROUTES.AUTHOR}/${node.slug}`),
     fallback: true,
   }
 }
