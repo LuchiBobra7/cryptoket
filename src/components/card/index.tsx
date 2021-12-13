@@ -1,9 +1,8 @@
-import { FC } from 'react'
+import { FC, ComponentProps } from 'react'
 import { Box, useStyleConfig } from '@chakra-ui/react'
 
-type Props = {
+type Props = ComponentProps<typeof Box> & {
   variant: string
-  [x: string]: any
 }
 
 const Card: FC<Props> = (props) => {
