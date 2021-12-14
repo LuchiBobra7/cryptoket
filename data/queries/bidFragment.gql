@@ -1,15 +1,13 @@
-fragment author on Author {
+fragment bid on Bid {
   id
-  name
+  price
+  title
   image {
+    url
     thumbnail: url(
       transformation: {
         image: {
-          resize: {
-            width: $authorImageSize
-            height: $authorImageSize
-            fit: crop
-          }
+          resize: { width: $bidImageSize, height: $bidImageSize, fit: crop }
         }
         document: { output: { format: webp } }
       }

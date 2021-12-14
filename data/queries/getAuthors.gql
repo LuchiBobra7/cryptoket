@@ -1,4 +1,4 @@
-query getAuthors($limit: Int) {
+query getAuthors($limit: Int, $authorImageSize: Int = 80) {
   authorsConnection(orderBy: income_DESC, first: $limit) {
     edges {
       node {

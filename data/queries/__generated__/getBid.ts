@@ -5,36 +5,29 @@ import * as Dom from 'graphql-request/dist/types.dom';
 import { GraphQLError } from 'graphql-request/dist/types';
 import { print } from 'graphql'
 import gql from 'graphql-tag';
+import { BidFragmentDoc } from './bidFragment';
 import { AuthorFragmentDoc } from './authorFragment';
 export type GetBidQueryVariables = Types.Exact<{
   slug?: Types.InputMaybe<Types.Scalars['String']>;
+  authorImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
+  bidImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
 }>;
 
 
-export type GetBidQuery = { __typename?: 'Query', bid?: { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined, author?: { __typename?: 'Author', id: string, name: string, image?: { __typename?: 'Asset', thumbnail: string } | null | undefined } | null | undefined } | null | undefined };
+export type GetBidQuery = { __typename?: 'Query', bid?: { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, author?: { __typename?: 'Author', id: string, name: string, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined };
 
 
 export const GetBidDocument = gql`
-    query getBid($slug: String) {
+    query getBid($slug: String, $authorImageSize: Int = 64, $bidImageSize: Int = 440) {
   bid(where: {slug: $slug}) {
-    id
-    price
-    title
-    image {
-      url
-      thumbnail: url(
-        transformation: {image: {resize: {width: 440, height: 440, fit: crop}}, document: {output: {format: webp}}}
-      )
-      blurDataURL: url(
-        transformation: {image: {resize: {width: 10, height: 10, fit: crop}}, document: {output: {format: webp}}}
-      )
-    }
+    ...bid
     author {
       ...author
     }
   }
 }
-    ${AuthorFragmentDoc}`;
+    ${BidFragmentDoc}
+${AuthorFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
 

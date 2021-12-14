@@ -5,18 +5,20 @@ import * as Dom from 'graphql-request/dist/types.dom';
 import { GraphQLError } from 'graphql-request/dist/types';
 import { print } from 'graphql'
 import gql from 'graphql-tag';
+import { BidFragmentDoc } from './bidFragment';
 export type GetBidsQueryVariables = Types.Exact<{
   limit?: Types.InputMaybe<Types.Scalars['Int']>;
   skip?: Types.InputMaybe<Types.Scalars['Int']>;
   slug?: Types.InputMaybe<Types.Scalars['String']>;
+  bidImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
 }>;
 
 
-export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, slug?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean } } };
+export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean } } };
 
 
 export const GetBidsDocument = gql`
-    query getBids($limit: Int, $skip: Int, $slug: String) {
+    query getBids($limit: Int, $skip: Int, $slug: String, $bidImageSize: Int = 202) {
   bidsConnection(
     orderBy: createdAt_DESC
     first: $limit
@@ -25,19 +27,8 @@ export const GetBidsDocument = gql`
   ) {
     edges {
       node {
-        id
-        price
-        title
+        ...bid
         slug
-        image {
-          url
-          thumbnail: url(
-            transformation: {image: {resize: {width: 202, height: 224, fit: crop}}, document: {output: {format: webp}}}
-          )
-          blurDataURL: url(
-            transformation: {image: {resize: {width: 10, height: 10, fit: crop}}, document: {output: {format: webp}}}
-          )
-        }
       }
     }
     pageInfo {
@@ -45,7 +36,7 @@ export const GetBidsDocument = gql`
     }
   }
 }
-    `;
+    ${BidFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
 
