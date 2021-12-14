@@ -20,7 +20,7 @@ const theme = extendTheme({
   styles: {
     global: (props: Dict) => ({
       '*': {
-        borderColor: mode('gray.1', 'black.3')(props),
+        borderColor: mode('blackAlpha.100', 'gray.4')(props),
       },
       '::placeholder': {
         color: mode('gray.2', 'whiteAlpha.800')(props),

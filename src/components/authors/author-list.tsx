@@ -71,6 +71,7 @@ const AuthorList = ({ items }: Props) => {
       customRightArrow={customRightArrow}
       overflowX={{ base: 'auto', md: 'hidden' }}
       removeArrowOnDeviceType={['tablet', 'mobile', 'base']}
+      minHeight="240px"
       mr={{ base: -6, md: 0 }}
       pb={6}
       mb={-6}

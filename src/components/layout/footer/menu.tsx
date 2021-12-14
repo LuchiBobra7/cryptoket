@@ -15,6 +15,7 @@ const Menu = ({ items }: MenuItemsProps) => {
             href={item.href}
             item={item}
             color={pathname == item.href ? activeColor : initialColor}
+            _hover={{ color: activeColor }}
           >
             {item.title}
           </NavLink>

@@ -1,5 +1,6 @@
 import { VStack, Container, List, ListItem, Box } from '@chakra-ui/react'
 import { HEADER_HEIGHT } from '@/constants/layout'
+import HeaderButtons from '@/components/layout/header/buttons'
 import navItems from './nav-data'
 import NavLink from './nav-link'
 
@@ -12,7 +13,7 @@ const NavMenu = () => {
       top={HEADER_HEIGHT}
       left={0}
       right={0}
-      height={`calc(100vh - ${HEADER_HEIGHT})`}
+      //height={`calc(100vh - ${HEADER_HEIGHT}px)`}
       background="white"
     >
       <List flex={1} spacing={5} as="nav" py={10}>
@@ -23,7 +24,10 @@ const NavMenu = () => {
         ))}
       </List>
       <Box as="footer" w="full" py={4} borderTopWidth={2}>
-        <Container>Buttons</Container>
+        <Container display="flex" justifyContent="center">
+          {' '}
+          <HeaderButtons />
+        </Container>
       </Box>
     </VStack>
   )

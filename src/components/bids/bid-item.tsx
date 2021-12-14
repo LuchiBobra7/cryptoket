@@ -11,6 +11,7 @@ import Card from '@/components/card'
 import Image from '@/components/image'
 import { BidListProps } from '@/types/bids'
 import { ROUTES } from '@/constants/routes'
+import { CURRENCY } from '@/constants/main'
 
 type Props = {
   item: BidListProps['edges'][0]['node']
@@ -73,7 +74,7 @@ const BidItem = ({ item }: Props) => (
         <Heading as="p" fontSize="sm">
           {item.price}{' '}
           <Text as="span" fontWeight="normal">
-            ETH
+            {CURRENCY}
           </Text>
         </Heading>
       ) : (

@@ -17,7 +17,7 @@ const NavLink = ({ item, ...props }: Props) => {
       href={item.href}
       color={pathname == item.href ? activeColor : initialColor}
       whiteSpace="nowrap"
-      _hover={{ textDecoration: 'none' }}
+      _hover={{ textDecoration: 'none', color: activeColor }}
       {...props}
     >
       {item.title}

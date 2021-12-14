@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import {
   Box,
   Container,
@@ -12,7 +11,6 @@ import {
   FormLabel,
   Switch,
   useColorMode,
-  useColorModeValue,
 } from '@chakra-ui/react'
 import Logo from '@/components/logo'
 import SocialLinks from '@/components/social-links'
@@ -20,7 +18,6 @@ import mainNavItems from '@/components/nav-menu/nav-data'
 import { legalInfoLinks } from './support-menu-data'
 import MenuHeader from './menu-header'
 import Menu from './menu'
-import useBreakpoint from '@/hooks/useBreakpoint'
 
 const Footer = () => {
   const { colorMode, toggleColorMode } = useColorMode()

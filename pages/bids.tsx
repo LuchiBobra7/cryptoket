@@ -1,9 +1,7 @@
 import { useRouter } from 'next/router'
 import { Container, VStack, Box, Button } from '@chakra-ui/react'
-import { ROUTES } from '@/constants/routes'
 import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
 import { AUTHORS_PER_PAGE, BIDS_PER_PAGE } from '@/constants/items'
-import Link from '@/components/link'
 import Banner from '@/components/banner'
 import SectionTitle from '@/components/section-title'
 import AuthorList from '@/components/authors/author-list'
@@ -19,7 +17,7 @@ type Props = {
   authors: AuthorListProps
 }
 
-const HomePage = ({ authors, bids }: Props) => {
+const BidsPage = ({ authors, bids }: Props) => {
   const { isFallback } = useRouter()
 
   if (isFallback) {
@@ -37,34 +35,11 @@ const HomePage = ({ authors, bids }: Props) => {
       spacing={V_SPACING_BETWEEN_PAGE_SECTIONS}
       alignItems="flex-start"
     >
-      <Banner />
       <Box as="section" w="full">
-        <SectionTitle title="Top Sellers" />
-        {!!authors.edges.length ? (
-          <AuthorList items={authors.edges} />
-        ) : (
-          <EmptyData />
-        )}
-      </Box>
-      <Box as="section" w="full">
-        <SectionTitle title="Hot Bids" />
+        <SectionTitle title="All Bids" />
         {!!bids.edges.length ? (
           <>
             <BidList items={bids.edges} />
-            {bids.pageInfo.hasNextPage && (
-              <Button
-                href={ROUTES.BIDS}
-                as={Link}
-                colorScheme="pink"
-                variant="outline"
-                display="flex"
-                w={240}
-                mt={V_SPACING_BETWEEN_PAGE_SECTIONS}
-                mx="auto"
-              >
-                View More
-              </Button>
-            )}
           </>
         ) : (
           <EmptyData />
@@ -74,7 +49,7 @@ const HomePage = ({ authors, bids }: Props) => {
   )
 }
 
-HomePage.getInitialProps = async ({ query: { slug = '' } }) => {
+BidsPage.getInitialProps = async ({ query: { slug = '' } }) => {
   const authors = (await getAuthors(AUTHORS_PER_PAGE)) || []
   const bids = (await getBids(BIDS_PER_PAGE, 0, slug)) || []
   return {
@@ -84,4 +59,4 @@ HomePage.getInitialProps = async ({ query: { slug = '' } }) => {
   }
 }
 
-export default HomePage
+export default BidsPage

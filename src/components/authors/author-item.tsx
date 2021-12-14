@@ -4,6 +4,7 @@ import Card from '@/components/card'
 import LinkOverlay from '@/components/link/link-overlay'
 import { AuthorListProps } from '@/types/authors'
 import { ROUTES } from '@/constants/routes'
+import { CURRENCY } from '@/constants/main'
 
 type Props = {
   item: AuthorListProps['edges'][0]['node']
@@ -73,7 +74,7 @@ const AuthorItem = ({ item, i, ...props }: Props) => (
       {item.income}
       {'  '}
       <Text as="span" fontWeight="normal">
-        ETH
+        {CURRENCY}
       </Text>
     </Heading>
   </LinkBox>
