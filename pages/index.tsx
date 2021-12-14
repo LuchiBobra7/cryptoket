@@ -36,14 +36,12 @@ const HomePage = ({ authors, bids }: Props) => {
       alignItems="flex-start"
     >
       <Banner />
-      <Box as="section" w="full">
-        <SectionTitle title="Top Sellers" />
-        {!!authors.edges.length ? (
+      {!!authors.edges.length ? (
+        <Box as="section" w="full">
+          <SectionTitle title="Top Sellers" />
           <AuthorList items={authors.edges} />
-        ) : (
-          <EmptyData />
-        )}
-      </Box>
+        </Box>
+      ) : null}
       <Box as="section" w="full">
         <SectionTitle title="Hot Bids" />
         {!!bids.edges.length ? (

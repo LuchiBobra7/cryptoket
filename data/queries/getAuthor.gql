@@ -1,22 +1,6 @@
-query getAuthor($slug: String) {
+query getAuthor($slug: String, $authorImageSize: Int = 220) {
   author(where: { slug: $slug }) {
-    id
-    name
-    image {
-      thumbnail: url(
-        transformation: {
-          image: { resize: { width: 220, height: 220, fit: crop } }
-          document: { output: { format: webp } }
-        }
-      )
-      blurDataURL: url(
-        transformation: {
-          image: { resize: { width: 10, height: 10, fit: crop } }
-          document: { output: { format: webp } }
-        }
-      )
-      url
-    }
+    ...author
     bgImage {
       thumbnail: url(
         transformation: {
@@ -26,7 +10,7 @@ query getAuthor($slug: String) {
       )
       blurDataURL: url(
         transformation: {
-          image: { resize: { width: 10, height: 10, fit: crop } }
+          image: { resize: { width: 40, height: 20, fit: crop } }
           document: { output: { format: webp } }
         }
       )

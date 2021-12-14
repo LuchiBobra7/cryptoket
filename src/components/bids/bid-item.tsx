@@ -19,7 +19,7 @@ type Props = {
 const BidItem = ({ item }: Props) => (
   <LinkBox as={Card} variant="smooth" className="bid-card">
     <AspectRatio
-      ratio={0.9}
+      ratio={1}
       width="full"
       bg={useColorModeValue('gray.100', 'black.4')}
       overflow="hidden"

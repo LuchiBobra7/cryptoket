@@ -10,22 +10,24 @@ type Props = {
   i: number
 }
 
-const AuthorItem = ({ item, i }: Props) => (
+const AuthorItem = ({ item, i, ...props }: Props) => (
   <LinkBox
     as={Card}
     className="author-card"
     position="relative"
     transition="box-shadow 0.2s ease-in"
+    {...props}
     _hover={{
       boxShadow: 'lg',
     }}
     _before={{
       content: `"${i + 1}"`,
-      position: 'absolute',
-      top: 2,
-      left: 2,
-      width: 7,
-      height: 7,
+      alignSelf: 'flex-start',
+      top: 0,
+      left: 0,
+      width: 8,
+      height: 8,
+      margin: -2,
       borderRadius: 'full',
       background: 'pink.500',
       color: 'white',
@@ -33,11 +35,12 @@ const AuthorItem = ({ item, i }: Props) => (
       justifyContent: 'center',
       alignItems: 'center',
       fontWeight: '600',
-      fontSize: 'xs',
+      lineHeight: '1.2',
     }}
   >
     <Avatar
-      size="lg"
+      width={20}
+      height={20}
       mb={2}
       src={item.image?.thumbnail}
       sx={{
@@ -51,13 +54,13 @@ const AuthorItem = ({ item, i }: Props) => (
     >
       {item.isVerified && (
         <AvatarBadge
-          boxSize="1.25rem"
+          boxSize="1rem"
           bg="green.500"
           border="none"
-          bottom="0.3rem"
-          right="0.3rem"
+          bottom="0.5rem"
+          right="0.5rem"
         >
-          <CheckIcon w={2.5} h={2.5} />
+          <CheckIcon w={2} h={2} />
         </AvatarBadge>
       )}
     </Avatar>

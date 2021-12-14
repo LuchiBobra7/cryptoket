@@ -41,7 +41,7 @@ const Footer = () => {
             spacing={7}
           >
             <Logo isFullWidth />
-            <Heading fontSize="md">Get the lastes Updates</Heading>
+            <Heading fontSize="md">Get the latest Updates</Heading>
             <HStack spacing={-5} maxW="70%">
               <Input placeholder="Email me" borderRadius="lg" />
               <Button borderRadius="lg" variant="primary">

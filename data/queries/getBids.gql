@@ -1,4 +1,9 @@
-query getBids($limit: Int, $skip: Int, $slug: String) {
+query getBids(
+  $limit: Int
+  $skip: Int
+  $slug: String
+  $bidImageSize: Int = 202
+) {
   bidsConnection(
     orderBy: createdAt_DESC
     first: $limit
@@ -7,25 +12,8 @@ query getBids($limit: Int, $skip: Int, $slug: String) {
   ) {
     edges {
       node {
-        id
-        price
-        title
+        ...bid
         slug
-        image {
-          url
-          thumbnail: url(
-            transformation: {
-              image: { resize: { width: 202, height: 224, fit: crop } }
-              document: { output: { format: webp } }
-            }
-          )
-          blurDataURL: url(
-            transformation: {
-              image: { resize: { width: 10, height: 10, fit: crop } }
-              document: { output: { format: webp } }
-            }
-          )
-        }
       }
     }
     pageInfo {

@@ -8,14 +8,15 @@ import gql from 'graphql-tag';
 import { AuthorFragmentDoc } from './authorFragment';
 export type GetAuthorsQueryVariables = Types.Exact<{
   limit?: Types.InputMaybe<Types.Scalars['Int']>;
+  authorImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
 }>;
 
 
-export type GetAuthorsQuery = { __typename?: 'Query', authorsConnection: { __typename?: 'AuthorConnection', edges: Array<{ __typename?: 'AuthorEdge', node: { __typename?: 'Author', isVerified?: boolean | null | undefined, income?: number | null | undefined, slug: string, id: string, name: string, image?: { __typename?: 'Asset', thumbnail: string } | null | undefined } }> } };
+export type GetAuthorsQuery = { __typename?: 'Query', authorsConnection: { __typename?: 'AuthorConnection', edges: Array<{ __typename?: 'AuthorEdge', node: { __typename?: 'Author', isVerified?: boolean | null | undefined, income?: number | null | undefined, slug: string, id: string, name: string, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } }> } };
 
 
 export const GetAuthorsDocument = gql`
-    query getAuthors($limit: Int) {
+    query getAuthors($limit: Int, $authorImageSize: Int = 80) {
   authorsConnection(orderBy: income_DESC, first: $limit) {
     edges {
       node {
