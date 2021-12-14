@@ -15,23 +15,22 @@ import NavMenu from '@/components/nav-menu'
 import useBreakpoint from '@/hooks/useBreakpoint'
 import { HEADER_HEIGHT, HEADER_GAP } from '@/constants/layout'
 import MobileNav from '@/components/nav-menu/mobile-nav'
+import HeaderButtons from './buttons'
 
 const Header = () => {
   const { isLargeScreen } = useBreakpoint()
   const { isOpen, onToggle } = useDisclosure()
   const bg = useColorModeValue('white', 'black.1')
-  const borderColor = useColorModeValue('blackAlpha.100', 'gray.4')
   return (
     <Box
       as="header"
       py={4}
       borderBottomWidth={2}
-      borderColor={borderColor}
       height={HEADER_HEIGHT}
       position="sticky"
       top={0}
       backgroundColor={bg}
-      filter="opacity(90%)"
+      filter="opacity(94%)"
       backdropFilter="saturate(180%) blur(5px)"
       zIndex={2}
     >
@@ -41,14 +40,7 @@ const Header = () => {
         {isLargeScreen ? (
           <HStack spacing={HEADER_GAP}>
             <NavMenu />
-            <HStack spacing={2}>
-              <Button variant="primary" rounded="xl">
-                Create
-              </Button>
-              <Button variant="outline" colorScheme="pink" rounded="xl">
-                Connect
-              </Button>
-            </HStack>
+            <HeaderButtons />
           </HStack>
         ) : (
           <IconButton

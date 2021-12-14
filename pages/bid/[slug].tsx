@@ -41,6 +41,7 @@ import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
 import { BIDS_PER_PAGE } from '@/constants/items'
 import { BidDetailsProps } from '@/types/bids'
 import CheckoutModal from '@/components/checkout-modal'
+import { CURRENCY } from '@/constants/main'
 
 type Props = {
   bidDetails: BidDetailsProps['bid']
@@ -94,7 +95,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
           <Text>
             From{' '}
             <Text fontWeight="bold" as="span">
-              {bidDetails.price} ETH
+              {bidDetails.price} {CURRENCY}
             </Text>
           </Text>
           {bidDetails.author && (
@@ -135,7 +136,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
 
           <HStack spacing={4} w="full">
             <Button variant="primary" rounded="xl" flex={1} onClick={onOpen}>
-              Buy for {bidDetails.price} ETH
+              Buy for {bidDetails.price} {CURRENCY}
             </Button>
             <CheckoutModal
               bidDetails={bidDetails}

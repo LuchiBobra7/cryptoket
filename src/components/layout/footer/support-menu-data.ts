@@ -1,18 +1,22 @@
+import { ROUTES } from '@/constants/routes'
+
+const { HELP_CENTER, TOS, LEGAL, PRIVACY_POLICY } = ROUTES
+
 export const legalInfoLinks = [
   {
     title: 'Help Center',
-    href: '/cookie-policy',
+    href: HELP_CENTER,
   },
   {
     title: 'Terms of service',
-    href: '/tos',
+    href: TOS,
   },
   {
     title: 'Legal',
-    href: '/legal',
+    href: LEGAL,
   },
   {
     title: 'Privacy policy',
-    href: '/privacy-policy',
+    href: PRIVACY_POLICY,
   },
 ]

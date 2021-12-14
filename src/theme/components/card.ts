@@ -16,11 +16,12 @@ const Card = {
       borderRadius: '2xl',
       filter: 'drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.1))',
     },
-    outline: {
+    outline: (props: Dict) => ({
       padding: 6,
       borderRadius: '2xl',
       borderWidth: 1,
-    },
+      borderColor: mode('gray.200', 'black.1')(props),
+    }),
   },
 
   defaultProps: {

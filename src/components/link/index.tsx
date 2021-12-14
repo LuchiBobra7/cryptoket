@@ -9,7 +9,9 @@ type Props = LinkProps & ChakraLinkProps
 const Link = ({ href, children, ...rest }: Props) => {
   return (
     <NextLink href={href} passHref>
-      <ChakraLink {...rest}>{children}</ChakraLink>
+      <ChakraLink _hover={{ textDecoration: 'none' }} {...rest}>
+        {children}
+      </ChakraLink>
     </NextLink>
   )
 }

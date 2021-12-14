@@ -16,7 +16,7 @@ const Loading: React.FC<{ isRouteChanging: boolean }> = ({
     >
       <Box
         value={(-1 + progress) * 100}
-        background="pink.500"
+        background="redLinear"
         position="relative"
         top={0}
         left={0}

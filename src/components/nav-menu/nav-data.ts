@@ -1,15 +1,19 @@
+import { ROUTES } from '@/constants/routes'
+
+const { HOME, BIDS, MY_BIDS } = ROUTES
+
 const navItems = [
   {
-    href: '/',
+    href: HOME,
+    title: 'Home',
+  },
+  {
+    href: BIDS,
     title: 'Explore',
   },
   {
-    href: '/bookmarks',
+    href: MY_BIDS,
     title: 'My items',
-  },
-  {
-    href: '/following',
-    title: 'Following',
   },
 ]
 

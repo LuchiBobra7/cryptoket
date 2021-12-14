@@ -13,6 +13,10 @@ const Button = {
     primary: {
       bg: 'redLinear',
       color: 'white',
+      transition: 'background .2s',
+      _hover: {
+        bg: 'redLinearInverse',
+      },
     },
   },
 }

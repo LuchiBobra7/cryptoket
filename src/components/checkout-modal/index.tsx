@@ -23,6 +23,7 @@ import {
 } from '@chakra-ui/react'
 import Image from '@/components/image'
 import { BidDetailsProps } from '@/types/bids'
+import { CURRENCY } from '@/constants/main'
 
 type Props = {
   bidDetails: BidDetailsProps['bid']
@@ -82,13 +83,17 @@ const CheckoutModal = ({ bidDetails, isOpen, onClose, ...props }: Props) => {
                       </Flex>
                     </HStack>
                   </Td>
-                  <Td textAlign="end">{bidDetails.price} ETH</Td>
+                  <Td textAlign="end">
+                    {bidDetails.price} {CURRENCY}
+                  </Td>
                 </Tr>
               </Tbody>
               <Tfoot>
                 <Tr>
                   <Th>Total</Th>
-                  <Th textAlign="end">{bidDetails.price} ETH</Th>
+                  <Th textAlign="end">
+                    {bidDetails.price} {CURRENCY}
+                  </Th>
                 </Tr>
               </Tfoot>
             </Table>
