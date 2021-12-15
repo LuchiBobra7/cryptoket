@@ -1,3 +1,4 @@
+import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 import {
   Container,
@@ -7,7 +8,6 @@ import {
   Heading,
   Text,
   Box,
-  Flex,
   Button,
   AspectRatio,
   Tabs,
@@ -16,19 +16,6 @@ import {
   Tab,
   TabPanel,
   Avatar,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
   useDisclosure,
   useColorModeValue,
 } from '@chakra-ui/react'
@@ -57,7 +44,6 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
   if (!bidDetails) {
     return <ErrorMessage />
   }
-  const modalBorderColor = useColorModeValue('blackAlpha.100', 'gray.4')
   return (
     <Container alignItems="flex-start">
       <SimpleGrid columns={{ md: 2 }} spacing={0}>
@@ -153,7 +139,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
   )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const bids = await getBids(BIDS_PER_PAGE, 0, '')
   return {
     paths: bids.edges.map(({ node }) => `${ROUTES.BID}/${node.slug}`),
@@ -161,9 +147,8 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const bidDetails = await getBid(params.slug as string)
-
   return {
     props: {
       bidDetails,

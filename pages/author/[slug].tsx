@@ -6,23 +6,19 @@ import {
   HStack,
   Avatar,
   Heading,
-  Select,
-  Icon,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { BsChevronDown } from 'react-icons/bs'
-import SearchBar from '@/components/search-bar'
+import SearchAndFiltersPanel from '@/components/search-and-filters-panel'
 import Image from '@/components/image'
 import EmptyData from '@/components/empty-data'
 import ErrorMessage from '@/components/error-message'
 import BidList from '@/components/bids/bid-list'
-import { getAuthor, getAuthors, getBids } from 'data/index'
+import { getAuthor, getBids } from '@/data/index'
 import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
 import { AUTHOR_IMAGE_SIZE } from '@/constants/images'
-import { AUTHORS_PER_PAGE, BIDS_PER_PAGE } from '@/constants/items'
+import { BIDS_PER_PAGE } from '@/constants/items'
 import { AuthorDetailsProps } from '@/types/authors'
 import { BidListProps } from '@/types/bids'
-import { ROUTES } from '@/constants/routes'
 
 type Props = {
   authorDetails: AuthorDetailsProps['author']
@@ -30,7 +26,6 @@ type Props = {
 }
 
 const AuthorPage = ({ authorDetails, bids }: Props) => {
-  const iconColor = useColorModeValue('gray.2', 'white')
   const { isFallback } = useRouter()
 
   if (isFallback) {
@@ -48,7 +43,7 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
         position="relative"
         bgColor="blue.800"
         height={300}
-        width="100%"
+        width="full"
       >
         <Image
           src={authorDetails.bgImage?.thumbnail || ''}
@@ -70,54 +65,28 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
         />
         <Heading fontSize="3xl">{authorDetails.name}</Heading>
       </VStack>
-      {!!bids.edges.length ? (
-        <Container
-          as={VStack}
-          py={V_SPACING_BETWEEN_PAGE_SECTIONS}
-          spacing={V_SPACING_BETWEEN_PAGE_SECTIONS}
-        >
-          <HStack spacing={7} w="full">
-            <SearchBar flex={2.5} />
-            <Select
-              placeholder="Select option"
-              flex={1}
-              color={iconColor}
-              icon={<Icon as={BsChevronDown} w={38} h={38} />}
-            >
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </Select>
-          </HStack>
 
-          <BidList w="full" items={bids.edges} />
-        </Container>
-      ) : (
-        <EmptyData />
-      )}
+      <Container
+        as={VStack}
+        py={V_SPACING_BETWEEN_PAGE_SECTIONS}
+        spacing={V_SPACING_BETWEEN_PAGE_SECTIONS}
+      >
+        <SearchAndFiltersPanel />
+        <BidList w="full" items={bids.edges} />
+      </Container>
     </>
   )
 }
 
-export async function getStaticPaths() {
-  const authors = (await getAuthors(AUTHORS_PER_PAGE)) || []
+AuthorPage.getInitialProps = async ({
+  query: { search = '', orderBy, slug = '' },
+}: any) => {
+  const authorDetails = await getAuthor(slug)
+  const bids = (await getBids(BIDS_PER_PAGE, 0, slug, search, orderBy)) ?? []
   return {
-    paths: authors.edges.map(({ node }) => `${ROUTES.AUTHOR}/${node.slug}`),
+    bids,
+    authorDetails,
     fallback: true,
-  }
-}
-
-export async function getStaticProps({ params }: any) {
-  const authorDetails = await getAuthor(params.slug as string)
-  if (authorDetails) {
-    const bids = (await getBids(BIDS_PER_PAGE, 0, params.slug as string)) || []
-    return {
-      props: {
-        authorDetails,
-        bids,
-        fallback: true,
-      },
-    }
   }
 }
 

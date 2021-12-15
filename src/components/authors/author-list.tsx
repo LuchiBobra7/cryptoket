@@ -1,5 +1,6 @@
 import { IconButton } from '@chakra-ui/react'
 import AuthorItem from './author-item'
+import EmptyData from '@/components/empty-data'
 import MagicCarousel from '@/components/carousel'
 import ArrowLeftCircle from '@/components/icon/arrow-left-circle'
 import ArrowRightCircle from '@/components/icon/arrow-right-circle'
@@ -32,38 +33,38 @@ const responsive = {
   },
 }
 
-//TODO: Create JSX Component with button groups
+const styles = {
+  variant: 'unstyled',
+  zIndex: 0,
+  position: 'absolute',
+  opacity: '0.8',
+  _hover: {
+    opacity: 1,
+    transform: 'scale(1.01)',
+  },
+}
 const customLeftArrow = (
   <IconButton
-    aria-label="arrow"
-    variant="unstyled"
-    zIndex={0}
-    position="absolute"
-    opacity="0.8"
+    aria-label="arrow-left"
+    __css={styles}
     left={0}
     ml={-1}
-    _hover={{ opacity: 1, transform: 'scale(1.01)' }}
     icon={<ArrowLeftCircle />}
   />
 )
 
-//TODO: Create JSX Component with button groups
 const customRightArrow = (
   <IconButton
-    aria-label="arrow"
-    variant="unstyled"
-    zIndex={0}
-    position="absolute"
-    opacity="0.8"
+    aria-label="arrow-right"
+    __css={styles}
     right={0}
     mr={-1}
-    _hover={{ opacity: 1, transform: 'scale(1.01)' }}
     icon={<ArrowRightCircle />}
   />
 )
 
-const AuthorList = ({ items }: Props) => {
-  return (
+const AuthorList = ({ items }: Props) =>
+  !!items.length ? (
     <MagicCarousel
       position={'relative'}
       responsive={responsive}
@@ -80,7 +81,8 @@ const AuthorList = ({ items }: Props) => {
         <AuthorItem i={i} key={node.id} item={node} />
       ))}
     </MagicCarousel>
+  ) : (
+    <EmptyData />
   )
-}
 
 export default AuthorList
