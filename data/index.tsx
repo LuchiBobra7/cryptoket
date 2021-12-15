@@ -29,11 +29,17 @@ export const getAuthor = async (slug: string) => {
   return result.author
 }
 
-export const getBids = async (limit: number, skip: number, slug: string) => {
+export const getBids = async (
+  limit: number,
+  skip: number,
+  slug: string = '',
+  search: string = '',
+  orderBy: string = 'createdAt_DESC'
+) => {
   const result = await request<GetBidsQuery>(
     SERVER_API_ENDPOINT,
     GetBidsDocument,
-    { limit, skip, slug }
+    { limit, skip, slug, search, orderBy }
   )
 
   const { edges, pageInfo } = result.bidsConnection || {}

@@ -10,6 +10,8 @@ export type GetBidsQueryVariables = Types.Exact<{
   limit?: Types.InputMaybe<Types.Scalars['Int']>;
   skip?: Types.InputMaybe<Types.Scalars['Int']>;
   slug?: Types.InputMaybe<Types.Scalars['String']>;
+  search?: Types.InputMaybe<Types.Scalars['String']>;
+  orderBy?: Types.InputMaybe<Types.BidOrderByInput>;
   bidImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
 }>;
 
@@ -18,12 +20,12 @@ export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?
 
 
 export const GetBidsDocument = gql`
-    query getBids($limit: Int, $skip: Int, $slug: String, $bidImageSize: Int = 202) {
+    query getBids($limit: Int, $skip: Int, $slug: String, $search: String, $orderBy: BidOrderByInput, $bidImageSize: Int = 202) {
   bidsConnection(
-    orderBy: createdAt_DESC
+    orderBy: $orderBy
     first: $limit
     skip: $skip
-    where: {author: {slug_contains: $slug}}
+    where: {author: {slug_contains: $slug}, title_contains: $search}
   ) {
     edges {
       node {

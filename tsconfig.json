@@ -17,6 +17,7 @@
     "paths": {
       "@/components/*": ["src/components/*"],
       "@/types/*": ["src/types/*"],
+      "@/utils/*": ["src/utils/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/data/*": ["data/*"],
       "@/queries/*": ["data/queries/__generated__/*"],

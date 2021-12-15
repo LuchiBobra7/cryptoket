@@ -32,7 +32,6 @@ type Props = {
 }
 
 const CheckoutModal = ({ bidDetails, isOpen, onClose, ...props }: Props) => {
-  const modalBorderColor = useColorModeValue('blackAlpha.100', 'gray.4')
   return bidDetails ? (
     <Portal>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -42,7 +41,6 @@ const CheckoutModal = ({ bidDetails, isOpen, onClose, ...props }: Props) => {
             display="flex"
             justifyContent="center"
             borderBottomWidth={1}
-            borderColor={modalBorderColor}
             py={6}
           >
             Check Out
@@ -102,7 +100,6 @@ const CheckoutModal = ({ bidDetails, isOpen, onClose, ...props }: Props) => {
             as={HStack}
             justifyContent="center"
             borderTopWidth={1}
-            borderColor={modalBorderColor}
             py={6}
           >
             <Button variant="primary" mr={3} borderRadius="xl">
