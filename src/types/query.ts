@@ -1,7 +1,7 @@
 export type Query = {
-  search?: string
+  search?: any
   orderBy?: string
-  page?: string
+  page?: string | number
   slug?: string
 }
 

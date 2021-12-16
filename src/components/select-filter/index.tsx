@@ -15,7 +15,6 @@ const SelectFilter = ({ ...props }) => {
       defaultValue={query.orderBy}
       {...props}
       onChange={(e) => {
-        console.log(e.target.value)
         push({
           pathname: asPath.includes(ROUTES.AUTHOR)
             ? `${ROUTES.AUTHOR}/${query.slug}`
