@@ -8,21 +8,21 @@
 
 ## Features
 
-[x] Switch Dark/Light theme
-[x] View Top Authors List and Bids
-[x] View Author details
-[x] View Bid details
-[x] Modal window for checkout (bid page)
-[x] Simple search
-[x] Sort bids by price and date
-[ ] Login with metamask
-[ ] Upload item
-[ ] Dropdown list for main search (with author and bid groups)
-[ ] Tablet and mobile version
+- [x] Switch Dark/Light theme
+- [x] View Top Authors List and Bids
+- [x] View Author details
+- [x] View Bid details
+- [x] Modal window for checkout (bid page)
+- [x] Simple search
+- [x] Sort bids by price and date
+- [ ] Login with metamask
+- [ ] Upload item
+- [ ] Dropdown list for main search (with author and bid groups)
+- [ ] Tablet and mobile version
 
 ## Preview
 
-![Home Page Preview](https://github.com/LuchiBobra7/cryptoket/tree/main/design/Home.png)
+![Home Page Preview](https://github.com/LuchiBobra7/cryptoket/blob/feature/refactoring-and-readme/design/Home.png)
 [Download design link](https://ui8.net/astikayasa/products/cryptoket---nft-marketplace-ui-kit)
 
 ## [Live Demo](cryptoket.vercel.app)
