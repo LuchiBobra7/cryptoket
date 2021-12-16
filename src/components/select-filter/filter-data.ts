@@ -1,6 +1,6 @@
 export const selectItems = [
   {
-    title: 'Newest',
+    title: 'Recently created',
     value: 'createdAt_DESC',
   },
   {
@@ -8,11 +8,11 @@ export const selectItems = [
     value: 'createdAt_ASC',
   },
   {
-    title: 'Cheapest',
+    title: 'Price: Low to High',
     value: 'price_ASC',
   },
   {
-    title: 'Expensive',
+    title: 'Price: High to Low',
     value: 'price_DESC',
   },
 ]

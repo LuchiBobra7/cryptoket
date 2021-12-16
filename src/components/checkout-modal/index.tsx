@@ -31,7 +31,7 @@ type Props = {
   onClose: () => void
 }
 
-const CheckoutModal = ({ bidDetails, isOpen, onClose, ...props }: Props) => {
+const CheckoutModal = ({ bidDetails, isOpen, onClose }: Props) => {
   return bidDetails ? (
     <Portal>
       <Modal isOpen={isOpen} onClose={onClose}>

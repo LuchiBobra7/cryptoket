@@ -12,6 +12,7 @@ import {
   Switch,
   useColorMode,
 } from '@chakra-ui/react'
+import { SITE_NAME } from '@/constants/main'
 import Logo from '@/components/logo'
 import SocialLinks from '@/components/social-links'
 import mainNavItems from '@/components/nav-menu/nav-data'
@@ -73,7 +74,7 @@ const Footer = () => {
           justifyContent={{ base: 'center', lg: 'space-between' }}
           flexWrap="wrap"
         >
-          <Text fontWeight="600">CrpytoKet, Inc. All Rights Reserved</Text>
+          <Text fontWeight="600">{SITE_NAME}, Inc. All Rights Reserved</Text>
           <SocialLinks />
         </Container>
       </Box>

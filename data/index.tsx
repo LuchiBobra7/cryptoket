@@ -4,8 +4,9 @@ import { GetAuthorsDocument, GetAuthorsQuery } from '@/queries/getAuthors'
 import { GetAuthorDocument, GetAuthorQuery } from '@/queries//getAuthor'
 import { GetBidsDocument, GetBidsQuery } from '@/queries/getBids'
 import { GetBidDocument, GetBidQuery } from '@/queries/getBid'
+import { BIDS_PER_PAGE, AUTHORS_PER_PAGE } from '@/constants/items'
 
-export const getAuthors = async (limit: number) => {
+export const getAuthors = async (limit: number = AUTHORS_PER_PAGE) => {
   const result = await request<GetAuthorsQuery>(
     SERVER_API_ENDPOINT,
     GetAuthorsDocument,
@@ -30,8 +31,8 @@ export const getAuthor = async (slug: string) => {
 }
 
 export const getBids = async (
-  limit: number,
-  skip: number,
+  limit: number = BIDS_PER_PAGE,
+  skip: number = 0,
   slug: string = '',
   search: string = '',
   orderBy: string = 'createdAt_DESC'

@@ -1,16 +1,7 @@
 import { useRouter } from 'next/router'
-import {
-  Container,
-  Box,
-  VStack,
-  HStack,
-  Avatar,
-  Heading,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Container, Box, VStack, Text, Avatar, Heading } from '@chakra-ui/react'
 import SearchAndFiltersPanel from '@/components/search-and-filters-panel'
 import Image from '@/components/image'
-import EmptyData from '@/components/empty-data'
 import ErrorMessage from '@/components/error-message'
 import BidList from '@/components/bids/bid-list'
 import { getAuthor, getBids } from '@/data/index'
@@ -19,6 +10,7 @@ import { AUTHOR_IMAGE_SIZE } from '@/constants/images'
 import { BIDS_PER_PAGE } from '@/constants/items'
 import { AuthorDetailsProps } from '@/types/authors'
 import { BidListProps } from '@/types/bids'
+import { QueryProps } from '@/types/query'
 
 type Props = {
   authorDetails: AuthorDetailsProps['author']
@@ -32,7 +24,7 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
     return 'Loading...'
   }
 
-  if (!authorDetails) {
+  if (!authorDetails && !bids) {
     return <ErrorMessage />
   }
 
@@ -46,9 +38,9 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
         width="full"
       >
         <Image
-          src={authorDetails.bgImage?.thumbnail || ''}
+          src={authorDetails?.bgImage?.thumbnail || ''}
           placeholder="blur"
-          blurDataURL={authorDetails.bgImage?.blurDataURL}
+          blurDataURL={authorDetails?.bgImage?.blurDataURL}
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -59,19 +51,21 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
           width={AUTHOR_IMAGE_SIZE.LG}
           height={AUTHOR_IMAGE_SIZE.LG}
           marginTop={`-${AUTHOR_IMAGE_SIZE.LG / 2}`}
-          src={authorDetails.image?.thumbnail}
+          src={authorDetails?.image?.thumbnail}
           borderWidth={5}
           borderColor="black.1"
         />
-        <Heading fontSize="3xl">{authorDetails.name}</Heading>
+        <Heading fontSize="3xl">{authorDetails?.name}</Heading>
       </VStack>
-
       <Container
         as={VStack}
         py={V_SPACING_BETWEEN_PAGE_SECTIONS}
         spacing={V_SPACING_BETWEEN_PAGE_SECTIONS}
       >
-        <SearchAndFiltersPanel />
+        <SearchAndFiltersPanel>
+          {/*TODO: modify to '43,775,476 results' format */}
+          <Text>{bids.edges.length} results</Text>
+        </SearchAndFiltersPanel>
         <BidList w="full" items={bids.edges} />
       </Container>
     </>
@@ -79,9 +73,10 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
 }
 
 AuthorPage.getInitialProps = async ({
-  query: { search = '', orderBy, slug = '' },
-}: any) => {
-  const authorDetails = await getAuthor(slug)
+  query: { search, orderBy, slug },
+}: QueryProps) => {
+  //TODO: one request for author details && author's bids
+  const authorDetails = await getAuthor(slug as string)
   const bids = (await getBids(BIDS_PER_PAGE, 0, slug, search, orderBy)) ?? []
   return {
     bids,

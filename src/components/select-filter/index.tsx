@@ -5,15 +5,17 @@ import { ROUTES } from '@/constants/routes'
 import { removeEmptyParams } from '@/utils/index'
 import { selectItems } from './filter-data'
 
-const SelectFilter = () => {
-  const iconColor = useColorModeValue('gray.2', 'white')
+const SelectFilter = ({ ...props }) => {
   const { push, asPath, query } = useRouter()
   return (
     <Select
-      value={query?.orderBy}
+      value={query.orderBy}
       flex={1}
-      color={iconColor}
+      maxW="sm"
+      defaultValue={query.orderBy}
+      {...props}
       onChange={(e) => {
+        console.log(e.target.value)
         push({
           pathname: asPath.includes(ROUTES.AUTHOR)
             ? `${ROUTES.AUTHOR}/${query.slug}`
@@ -27,11 +29,7 @@ const SelectFilter = () => {
       icon={<Icon as={BsChevronDown} w={38} h={38} />}
     >
       {selectItems.map((item, i) => (
-        <option
-          key={i}
-          value={item.value}
-          selected={query.orderBy === item.value || i === 0}
-        >
+        <option key={i} value={item.value}>
           {item.title}
         </option>
       ))}

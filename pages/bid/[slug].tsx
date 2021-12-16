@@ -22,13 +22,12 @@ import {
 import SectionTitle from '@/components/section-title'
 import Image from '@/components/image'
 import ErrorMessage from '@/components/error-message'
-import { getBid, getBids } from 'data/index'
+import CheckoutModal from '@/components/checkout-modal'
+import { getBid, getBids } from '@/data/index'
 import { ROUTES } from '@/constants/routes'
 import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
-import { BIDS_PER_PAGE } from '@/constants/items'
-import { BidDetailsProps } from '@/types/bids'
-import CheckoutModal from '@/components/checkout-modal'
 import { CURRENCY } from '@/constants/main'
+import { BidDetailsProps } from '@/types/bids'
 
 type Props = {
   bidDetails: BidDetailsProps['bid']
@@ -140,15 +139,21 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const bids = await getBids(BIDS_PER_PAGE, 0, '')
+  const bids = await getBids()
   return {
     paths: bids.edges.map(({ node }) => `${ROUTES.BID}/${node.slug}`),
     fallback: true,
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const bidDetails = await getBid(params.slug as string)
+type ParamsProps = {
+  params: GetStaticProps & { slug: string }
+}
+
+export const getStaticProps = async ({
+  params: { slug = '' },
+}: ParamsProps) => {
+  const bidDetails = await getBid(slug as string)
   return {
     props: {
       bidDetails,
