@@ -5,6 +5,7 @@ query getBids(
   $search: String
   $orderBy: BidOrderByInput
   $bidImageSize: Int = 202
+  $authorImageSize: Int = 80
 ) {
   bidsConnection(
     orderBy: $orderBy

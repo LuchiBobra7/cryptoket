@@ -9,7 +9,7 @@
 ## Features
 
 - [x] Switch Dark/Light theme (in footer)
-- [x] View Top Authors List and Bids
+- [x] View Top Authors List (ordered by income) and Bids
 - [x] View Author details
 - [x] View Bid details
 - [x] Modal window for checkout (bid page)
@@ -22,6 +22,7 @@
 - [ ] Like/unlike item
 - [ ] Favorite items
 - [ ] Tablet and mobile version
+- [ ] Valid author income (price\*sales)
 
 ## Preview
 
