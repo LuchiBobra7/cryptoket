@@ -21,7 +21,7 @@ const theme = extendTheme({
   styles: {
     global: (props: Dict) => ({
       '*': {
-        borderColor: mode('blackAlpha.100', 'gray.4')(props),
+        borderColor: mode('blackAlpha.100', 'whiteAlpha.50')(props),
       },
       '::placeholder': {
         color: mode('gray.2', 'whiteAlpha.800')(props),
@@ -31,7 +31,7 @@ const theme = extendTheme({
         color: mode('black.2', 'gray.1')(props),
       },
       '[class*=chakra-input], [class*=chakra-select]': {
-        color: mode('gray.2', 'white')(props),
+        color: mode('gray.2', 'whiteAlpha.800')(props),
       },
     }),
   },

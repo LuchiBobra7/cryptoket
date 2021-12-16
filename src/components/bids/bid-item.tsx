@@ -3,8 +3,8 @@ import {
   VStack,
   AspectRatio,
   Text,
-  useColorModeValue,
   LinkBox,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import LinkOverlay from '@/components/link/link-overlay'
 import Card from '@/components/card'
@@ -35,7 +35,7 @@ const BidItem = ({ item }: Props) => (
         width: 12,
         height: 12,
         borderRadius: 'full',
-        background: 'whiteAlpha.800',
+        background: useColorModeValue('whiteAlpha.800', 'blackAlpha.800'),
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
