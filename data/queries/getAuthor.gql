@@ -16,6 +16,5 @@ query getAuthor($slug: String, $authorImageSize: Int = 220) {
       )
       url
     }
-    name
   }
 }

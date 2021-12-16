@@ -3,7 +3,6 @@ query getAuthors($limit: Int, $authorImageSize: Int = 80) {
     edges {
       node {
         ...author
-        isVerified
         income
         slug
       }
