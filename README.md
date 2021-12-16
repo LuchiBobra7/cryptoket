@@ -28,7 +28,7 @@
 ![Home Page Preview](/design/Home.png)
 [Download design link](https://ui8.net/astikayasa/products/cryptoket---nft-marketplace-ui-kit)
 
-## [Live Demo](cryptoket.vercel.app)
+## [Live Demo](https://cryptoket.vercel.app)
 
 ## Getting Started
 
