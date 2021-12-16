@@ -39,8 +39,8 @@ const SearchBar = ({ ...props }) => {
           }),
         })
       }}
-      {...props}
       maxW="xl"
+      {...props}
     >
       <InputGroup>
         <InputLeftElement

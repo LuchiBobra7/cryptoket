@@ -18,7 +18,7 @@ export type GetBidsQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, author?: { __typename?: 'Author', name: string, id: string, isVerified?: boolean | null | undefined, bgImage?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean } } };
+export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, author?: { __typename?: 'Author', id: string, name: string, isVerified?: boolean | null | undefined, bgImage?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean } } };
 
 
 export const GetBidsDocument = gql`
@@ -44,11 +44,11 @@ export const GetBidsDocument = gql`
             )
             url
           }
-          name
         }
       }
     }
     pageInfo {
+      hasPreviousPage
       hasNextPage
     }
   }

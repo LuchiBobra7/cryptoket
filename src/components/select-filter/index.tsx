@@ -13,7 +13,6 @@ const SelectFilter = ({ ...props }) => {
       flex={1}
       maxW="sm"
       defaultValue={query.orderBy}
-      {...props}
       onChange={(e) => {
         push({
           pathname: asPath.includes(ROUTES.AUTHOR)
@@ -26,6 +25,7 @@ const SelectFilter = ({ ...props }) => {
         })
       }}
       icon={<Icon as={BsChevronDown} w={38} h={38} />}
+      {...props}
     >
       {selectItems.map((item, i) => (
         <option key={i} value={item.value}>
