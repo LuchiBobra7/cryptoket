@@ -39,9 +39,9 @@ const BidsPage = ({ bids, search }: Props) => {
 }
 
 BidsPage.getInitialProps = async ({
-  query: { search, orderBy, slug },
+  query: { search, slug, orderBy },
 }: QueryProps) => {
-  const bids = (await getBids(BIDS_PER_PAGE, 0, search, orderBy, slug)) ?? []
+  const bids = (await getBids(BIDS_PER_PAGE, 0, search, slug, orderBy)) ?? []
   return {
     bids,
     search,

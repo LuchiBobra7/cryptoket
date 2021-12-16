@@ -22,7 +22,7 @@
 
 ## Preview
 
-![Home Page Preview](https://github.com/LuchiBobra7/cryptoket/blob/feature/refactoring-and-readme/design/Home.png)
+![Home Page Preview](/design/Home.png)
 [Download design link](https://ui8.net/astikayasa/products/cryptoket---nft-marketplace-ui-kit)
 
 ## [Live Demo](cryptoket.vercel.app)
