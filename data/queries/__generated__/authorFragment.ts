@@ -5,12 +5,13 @@ import * as Dom from 'graphql-request/dist/types.dom';
 import { GraphQLError } from 'graphql-request/dist/types';
 import { print } from 'graphql'
 import gql from 'graphql-tag';
-export type AuthorFragment = { __typename?: 'Author', id: string, name: string, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined };
+export type AuthorFragment = { __typename?: 'Author', id: string, name: string, isVerified?: boolean | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined };
 
 export const AuthorFragmentDoc = gql`
     fragment author on Author {
   id
   name
+  isVerified
   image {
     thumbnail: url(
       transformation: {image: {resize: {width: $authorImageSize, height: $authorImageSize, fit: crop}}, document: {output: {format: webp}}}

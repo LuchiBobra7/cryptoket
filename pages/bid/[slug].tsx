@@ -15,10 +15,10 @@ import {
   TabPanels,
   Tab,
   TabPanel,
-  Avatar,
   useDisclosure,
   useColorModeValue,
 } from '@chakra-ui/react'
+import AuthorAvatar from '@/components/authors/author-avatar'
 import SectionTitle from '@/components/section-title'
 import Image from '@/components/image'
 import ErrorMessage from '@/components/error-message'
@@ -26,6 +26,7 @@ import CheckoutModal from '@/components/checkout-modal'
 import { getBid, getBids } from '@/data/index'
 import { ROUTES } from '@/constants/routes'
 import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
+import { AUTHOR_IMAGE_SIZE } from '@/constants/images'
 import { CURRENCY } from '@/constants/main'
 import { BidDetailsProps } from '@/types/bids'
 
@@ -84,10 +85,11 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
             </Text>
           </Text>
           {bidDetails.author && (
-            <HStack spacing={3}>
-              <Avatar
-                size="lg"
-                src={bidDetails.author.image?.thumbnail || ''}
+            <HStack spacing={4}>
+              <AuthorAvatar
+                avatarSize={AUTHOR_IMAGE_SIZE.SM}
+                image={bidDetails.author.image}
+                isVerified={bidDetails.author.isVerified}
               />
               <Heading fontSize="md">{bidDetails.author.name}</Heading>
             </HStack>
@@ -101,20 +103,21 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
             </TabList>
 
             <TabPanels>
-              <TabPanel>
-                <Text color="gray.2" lineHeight="26px">
-                  Lorem Ipsum is simply dummy text of the printing and
+              <TabPanel px={0}>
+                <Text color="gray.2" lineHeight="1.54">
+                  {bidDetails.description ||
+                    `Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
-                  specimen book
+                  specimen book`}
                 </Text>
               </TabPanel>
-              <TabPanel>
-                <Text>two!</Text>
+              <TabPanel px={0}>
+                <Text>offers</Text>
               </TabPanel>
-              <TabPanel>
-                <Text>three!</Text>
+              <TabPanel px={0}>
+                <Text>history</Text>
               </TabPanel>
             </TabPanels>
           </Tabs>

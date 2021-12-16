@@ -4,6 +4,7 @@ import SearchAndFiltersPanel from '@/components/search-and-filters-panel'
 import Image from '@/components/image'
 import ErrorMessage from '@/components/error-message'
 import BidList from '@/components/bids/bid-list'
+import AuthorAvatar from '@/components/authors/author-avatar'
 import { getAuthor, getBids } from '@/data/index'
 import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
 import { AUTHOR_IMAGE_SIZE } from '@/constants/images'
@@ -47,11 +48,11 @@ const AuthorPage = ({ authorDetails, bids }: Props) => {
         />
       </Box>
       <VStack spacing={4}>
-        <Avatar
-          width={AUTHOR_IMAGE_SIZE.LG}
-          height={AUTHOR_IMAGE_SIZE.LG}
+        <AuthorAvatar
+          avatarSize={AUTHOR_IMAGE_SIZE.LG}
+          image={authorDetails?.image}
+          isVerified={authorDetails?.isVerified}
           marginTop={`-${AUTHOR_IMAGE_SIZE.LG / 2}`}
-          src={authorDetails?.image?.thumbnail}
           borderWidth={5}
           borderColor="black.1"
         />

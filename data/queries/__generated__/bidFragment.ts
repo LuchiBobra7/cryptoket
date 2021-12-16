@@ -5,13 +5,14 @@ import * as Dom from 'graphql-request/dist/types.dom';
 import { GraphQLError } from 'graphql-request/dist/types';
 import { print } from 'graphql'
 import gql from 'graphql-tag';
-export type BidFragment = { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined };
+export type BidFragment = { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined };
 
 export const BidFragmentDoc = gql`
     fragment bid on Bid {
   id
   price
   title
+  description
   image {
     url
     thumbnail: url(

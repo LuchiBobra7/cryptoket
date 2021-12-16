@@ -1,6 +1,7 @@
 fragment author on Author {
   id
   name
+  isVerified
   image {
     thumbnail: url(
       transformation: {

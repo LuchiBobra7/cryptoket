@@ -1,7 +1,7 @@
-import { Heading, Avatar, AvatarBadge, Text, LinkBox } from '@chakra-ui/react'
-import { CheckIcon } from '@chakra-ui/icons'
+import { Heading, Text, LinkBox } from '@chakra-ui/react'
 import Card from '@/components/card'
 import LinkOverlay from '@/components/link/link-overlay'
+import AuthorAvatar from '@/components/authors/author-avatar'
 import { AuthorListProps } from '@/types/authors'
 import { ROUTES } from '@/constants/routes'
 import { CURRENCY } from '@/constants/main'
@@ -39,11 +39,10 @@ const AuthorItem = ({ item, i, ...props }: Props) => (
       lineHeight: '1.2',
     }}
   >
-    <Avatar
-      width={20}
-      height={20}
+    <AuthorAvatar
+      image={item.image}
+      isVerified={item.isVerified}
       mb={2}
-      src={item.image?.thumbnail}
       sx={{
         '& img': {
           transition: 'filter 0.2s ease-out',
@@ -52,19 +51,7 @@ const AuthorItem = ({ item, i, ...props }: Props) => (
           filter: 'brightness(1.1)',
         },
       }}
-    >
-      {item.isVerified && (
-        <AvatarBadge
-          boxSize="1rem"
-          bg="green.500"
-          border="none"
-          bottom="0.5rem"
-          right="0.5rem"
-        >
-          <CheckIcon w={2} h={2} />
-        </AvatarBadge>
-      )}
-    </Avatar>
+    />
     <Heading fontSize="md" maxWidth="full" isTruncated>
       <LinkOverlay href={`${ROUTES.AUTHOR}/${item.slug}`}>
         {item.name}

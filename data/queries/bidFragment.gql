@@ -2,6 +2,7 @@ fragment bid on Bid {
   id
   price
   title
+  description
   image {
     url
     thumbnail: url(

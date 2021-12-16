@@ -1,4 +1,6 @@
 export const AUTHOR_IMAGE_SIZE = {
+  SM: '4rem',
+  MD: '5rem',
   LG: 220,
 }
 
