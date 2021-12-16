@@ -8,24 +8,27 @@
 
 ## Features
 
-- [x] Switch Dark/Light theme
+- [x] Switch Dark/Light theme (in footer)
 - [x] View Top Authors List and Bids
 - [x] View Author details
 - [x] View Bid details
 - [x] Modal window for checkout (bid page)
 - [x] Simple search
 - [x] Sort bids by price and date
-- [ ] Login with metamask
-- [ ] Upload item
 - [ ] Dropdown list for main search (with author and bid groups)
+- [ ] Login with metamask
+- [ ] User profile
+- [ ] Upload item
+- [ ] Like/unlike item
+- [ ] Favorite items
 - [ ] Tablet and mobile version
 
 ## Preview
 
-![Home Page Preview](https://github.com/LuchiBobra7/cryptoket/blob/feature/refactoring-and-readme/design/Home.png)
+![Home Page Preview](/design/Home.png)
 [Download design link](https://ui8.net/astikayasa/products/cryptoket---nft-marketplace-ui-kit)
 
-## [Live Demo](cryptoket.vercel.app)
+## [Live Demo](https://cryptoket.vercel.app)
 
 ## Getting Started
 
