@@ -8,16 +8,19 @@
 
 ## Features
 
-- [x] Switch Dark/Light theme
+- [x] Switch Dark/Light theme (in footer)
 - [x] View Top Authors List and Bids
 - [x] View Author details
 - [x] View Bid details
 - [x] Modal window for checkout (bid page)
 - [x] Simple search
 - [x] Sort bids by price and date
-- [ ] Login with metamask
-- [ ] Upload item
 - [ ] Dropdown list for main search (with author and bid groups)
+- [ ] Login with metamask
+- [ ] User profile
+- [ ] Upload item
+- [ ] Like/unlike item
+- [ ] Favorite items
 - [ ] Tablet and mobile version
 
 ## Preview
