@@ -34,12 +34,11 @@ query getBids(
             )
             url
           }
-          name
         }
       }
     }
-
     pageInfo {
+      hasPreviousPage
       hasNextPage
     }
   }
