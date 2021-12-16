@@ -1,4 +1,4 @@
-import { extendTheme, theme as baseTheme } from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { Dict } from '@chakra-ui/utils'
 import breakpoints from './breakpoints'
@@ -14,6 +14,7 @@ const config = {
   initialColorMode: 'light',
   useSystemColorMode: false,
 }
+const { fonts, fontSizes, Heading } = typography
 
 const theme = extendTheme({
   config,
@@ -29,12 +30,15 @@ const theme = extendTheme({
         bg: mode('white', 'black.4')(props),
         color: mode('black.2', 'gray.1')(props),
       },
+      '[class*=chakra-input], [class*=chakra-select]': {
+        color: mode('gray.2', 'white')(props),
+      },
     }),
   },
   breakpoints,
   colors,
-  fonts: typography.fonts,
-  fontSizes: typography.fontSizes,
+  fonts,
+  fontSizes,
   sizes,
   components: {
     Button,
@@ -42,7 +46,7 @@ const theme = extendTheme({
     Select: Input,
     Card,
     Container,
-    Heading: typography.Heading,
+    Heading,
   },
 })
 

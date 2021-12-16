@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
-import { Container, VStack, Box, Button } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 import { ROUTES } from '@/constants/routes'
 import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
-import { AUTHORS_PER_PAGE, BIDS_PER_PAGE } from '@/constants/items'
+import InnerPageContainer from '@/components/layout/inner-page-container'
 import Link from '@/components/link'
 import Banner from '@/components/banner'
 import SectionTitle from '@/components/section-title'
@@ -25,17 +25,12 @@ const HomePage = ({ authors, bids }: Props) => {
     return 'Loading'
   }
 
-  if (!authors) {
+  if (!authors && !bids) {
     return <ErrorMessage />
   }
 
   return (
-    <Container
-      py={V_SPACING_BETWEEN_PAGE_SECTIONS}
-      as={VStack}
-      spacing={V_SPACING_BETWEEN_PAGE_SECTIONS}
-      alignItems="flex-start"
-    >
+    <InnerPageContainer>
       <Banner />
       <Box as="section" w="full">
         <SectionTitle title="Top Sellers" />
@@ -57,13 +52,13 @@ const HomePage = ({ authors, bids }: Props) => {
           View More
         </Button>
       </Box>
-    </Container>
+    </InnerPageContainer>
   )
 }
 
 HomePage.getInitialProps = async () => {
-  const authors = (await getAuthors(AUTHORS_PER_PAGE)) ?? []
-  const bids = (await getBids(BIDS_PER_PAGE, 0)) ?? []
+  const authors = (await getAuthors()) ?? []
+  const bids = (await getBids()) ?? []
   return {
     authors,
     bids,

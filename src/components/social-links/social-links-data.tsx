@@ -1,27 +1,30 @@
-import Instagram from 'src/components/icon/instagram'
-import Twitter from 'src/components/icon/twitter'
-import Telegram from 'src/components/icon/telegram'
-import Discord from 'src/components/icon/discord'
+import Instagram from '@/components/icon/instagram'
+import Twitter from '@/components/icon/twitter'
+import Telegram from '@/components/icon/telegram'
+import Discord from '@/components/icon/discord'
+import { SOCIAL_LINKS } from '@/constants/social-links'
+
+const { INSTAGRAM, TWITTER, TELEGRAM, DISCORD } = SOCIAL_LINKS
 
 export const socialLinkItems = [
   {
     title: 'Instagram',
-    href: 'instagram',
+    href: INSTAGRAM,
     icon: <Instagram />,
   },
   {
     title: 'Twitter',
-    href: 'twitter',
+    href: TWITTER,
     icon: <Twitter />,
   },
   {
     title: 'Telegram',
-    href: 'telegram',
+    href: TELEGRAM,
     icon: <Telegram />,
   },
   {
     title: 'Discord',
-    href: 'discord',
+    href: DISCORD,
     icon: <Discord />,
   },
 ]

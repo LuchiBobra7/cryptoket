@@ -4,7 +4,7 @@ import { ROUTES } from '@/constants/routes'
 
 const HeaderButtons = () => {
   return (
-    <HStack spacing={2}>
+    <HStack spacing={3}>
       <Button href={ROUTES.CREATE_BID} as={Link} variant="primary" rounded="xl">
         Create
       </Button>
