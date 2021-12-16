@@ -12,7 +12,7 @@ export type GetAuthorsQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetAuthorsQuery = { __typename?: 'Query', authorsConnection: { __typename?: 'AuthorConnection', edges: Array<{ __typename?: 'AuthorEdge', node: { __typename?: 'Author', isVerified?: boolean | null | undefined, income?: number | null | undefined, slug: string, id: string, name: string, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } }> } };
+export type GetAuthorsQuery = { __typename?: 'Query', authorsConnection: { __typename?: 'AuthorConnection', edges: Array<{ __typename?: 'AuthorEdge', node: { __typename?: 'Author', income?: number | null | undefined, slug: string, id: string, name: string, isVerified?: boolean | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } }> } };
 
 
 export const GetAuthorsDocument = gql`
@@ -21,7 +21,6 @@ export const GetAuthorsDocument = gql`
     edges {
       node {
         ...author
-        isVerified
         income
         slug
       }

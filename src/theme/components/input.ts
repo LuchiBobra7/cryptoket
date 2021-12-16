@@ -19,7 +19,9 @@ const Input = {
       },
     }),
     filled: (props: Dict) => ({
-      backgroundColor: mode('white', 'black.2')(props),
+      field: {
+        backgroundColor: mode('white', 'black.2')(props),
+      },
     }),
   },
 }

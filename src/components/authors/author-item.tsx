@@ -17,7 +17,6 @@ const AuthorItem = ({ item, i, ...props }: Props) => (
     className="author-card"
     position="relative"
     transition="box-shadow 0.2s ease-in"
-    {...props}
     _hover={{
       boxShadow: 'lg',
     }}
@@ -38,6 +37,7 @@ const AuthorItem = ({ item, i, ...props }: Props) => (
       fontWeight: '600',
       lineHeight: '1.2',
     }}
+    {...props}
   >
     <AuthorAvatar
       image={item.image}

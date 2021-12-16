@@ -2,7 +2,7 @@ import {
   Box,
   HStack,
   Container,
-  Button,
+  Spacer,
   IconButton,
   Collapse,
   useColorModeValue,
@@ -37,6 +37,7 @@ const Header = () => {
       <Container as={HStack} maxW="container.2xl" spacing={HEADER_GAP}>
         <Logo />
         <SearchBar />
+        <Spacer />
         {isLargeScreen ? (
           <HStack spacing={HEADER_GAP}>
             <NavMenu />

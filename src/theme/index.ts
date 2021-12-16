@@ -8,6 +8,7 @@ import sizes from './sizes'
 import Container from './components/container'
 import Button from './components/button'
 import Input from './components/input'
+import Textarea from './components/textarea'
 import Card from './components/card'
 
 const config = {
@@ -44,6 +45,7 @@ const theme = extendTheme({
     Button,
     Input,
     Select: Input,
+    Textarea,
     Card,
     Container,
     Heading,
