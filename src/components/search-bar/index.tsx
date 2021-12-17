@@ -40,7 +40,6 @@ const SearchBar = ({ ...props }) => {
         })
       }}
       maxW="xl"
-      {...props}
     >
       <InputGroup>
         <InputLeftElement
@@ -53,6 +52,7 @@ const SearchBar = ({ ...props }) => {
           placeholder="Search bids"
           value={searchValue ?? ''}
           onChange={(e) => setSearchValue(e.target.value)}
+          {...props}
         />
       </InputGroup>
     </HStack>

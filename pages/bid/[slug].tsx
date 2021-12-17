@@ -123,7 +123,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
           </Tabs>
 
           <HStack spacing={4} w="full">
-            <Button variant="primary" rounded="xl" flex={1} onClick={onOpen}>
+            <Button variant="primary" flex={1} onClick={onOpen}>
               Buy for {bidDetails.price} {CURRENCY}
             </Button>
             <CheckoutModal
@@ -131,7 +131,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
               isOpen={isOpen}
               onClose={onClose}
             />
-            <Button variant="outline" colorScheme="pink" rounded="xl" flex={1}>
+            <Button variant="outline" colorScheme="pink" flex={1}>
               Make Offer
             </Button>
           </HStack>

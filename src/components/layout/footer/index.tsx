@@ -41,8 +41,8 @@ const Footer = () => {
             <Logo isFullWidth />
             <Heading fontSize="md">Get the latest Updates</Heading>
             <HStack spacing={-5} maxW="70%">
-              <Input placeholder="Email me" borderRadius="lg" />
-              <Button borderRadius="lg" variant="primary">
+              <Input placeholder="Email me" type="email" borderRadius="lg" />
+              <Button variant="primary" zIndex="1">
                 Email me
               </Button>
             </HStack>
@@ -59,7 +59,7 @@ const Footer = () => {
           </VStack>
 
           <VStack alignItems="flex-start" flex="1" spacing={7}>
-            <MenuHeader title="CryptoKet" />
+            <MenuHeader title={SITE_NAME} />
             <Menu items={mainNavItems} />
           </VStack>
           <VStack alignItems="flex-start" flex="1" spacing={7}>
