@@ -36,9 +36,7 @@ const colors = {
     900: 'rgba(36, 37, 45, 0.90)',
   },
   redLinear:
-    'linear-gradient(101.12deg, #EB1484 27.35%, #C91CC3 99.99%, #C81CC5 100%)',
-  redLinearInverse:
-    'linear-gradient(-101.12deg, #EB1484 10.35%, #C91CC3 99.99%, #C81CC5 100%)',
+    'linear-gradient(to right,  #EB1484 0%, #C91CC3  51%,  #EB1484  100%)',
   dark: '#24252D',
   white: '#fff',
   gray: {

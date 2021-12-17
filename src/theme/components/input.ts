@@ -1,27 +1,20 @@
-import { mode } from '@chakra-ui/theme-tools'
 import { Dict } from '@chakra-ui/utils'
+import { sizes, variants } from './form-element'
 
 const Input = {
   sizes: {
     md: {
       field: {
-        fontSize: 'sm',
+        ...sizes.md,
       },
     },
   },
   variants: {
     outline: (props: Dict) => ({
-      field: {
-        borderColor: mode('gray.1', 'black.2')(props),
-        backgroundColor: mode('white', 'black.2')(props),
-        color: mode('gray.2', 'white')(props),
-        borderRadius: 'xl',
-      },
+      field: variants.outline(props),
     }),
     filled: (props: Dict) => ({
-      field: {
-        backgroundColor: mode('white', 'black.2')(props),
-      },
+      field: variants.filled(props),
     }),
   },
 }

@@ -5,8 +5,8 @@ import {
   Spacer,
   IconButton,
   Collapse,
-  useColorModeValue,
   useDisclosure,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import Logo from '@/components/logo'
@@ -20,7 +20,9 @@ import HeaderButtons from './buttons'
 const Header = () => {
   const { isLargeScreen } = useBreakpoint()
   const { isOpen, onToggle } = useDisclosure()
-  const bg = useColorModeValue('white', 'black.1')
+  const headerBg = useColorModeValue('white', 'black.1')
+  const searchBg = useColorModeValue('white', 'black.4')
+  const searchBorderColor = useColorModeValue('gray.1', 'black.4')
   return (
     <Box
       as="header"
@@ -29,14 +31,22 @@ const Header = () => {
       height={HEADER_HEIGHT}
       position="sticky"
       top={0}
-      backgroundColor={bg}
+      backgroundColor={headerBg}
       filter="opacity(94%)"
       backdropFilter="saturate(180%) blur(5px)"
       zIndex={2}
     >
       <Container as={HStack} maxW="container.2xl" spacing={HEADER_GAP}>
         <Logo />
-        <SearchBar />
+        <SearchBar
+          bgColor={searchBg}
+          borderColor={searchBorderColor}
+          _hover={{ borderColor: searchBorderColor }}
+          _focus={{
+            borderColor: searchBorderColor,
+            boxShadow: '0 0px 6px rgba(0, 0, 0, 0.2)',
+          }}
+        />
         <Spacer />
         {isLargeScreen ? (
           <HStack spacing={HEADER_GAP}>

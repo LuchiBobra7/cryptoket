@@ -1,25 +1,8 @@
-import { mode } from '@chakra-ui/theme-tools'
-import { Dict } from '@chakra-ui/utils'
+import { sizes, variants } from './form-element'
 
 const Textarea = {
-  sizes: {
-    md: {
-      field: {
-        fontSize: 'sm',
-      },
-    },
-  },
-  variants: {
-    outline: (props: Dict) => ({
-      borderColor: mode('gray.1', 'black.2')(props),
-      backgroundColor: mode('white', 'black.2')(props),
-      color: mode('gray.2', 'white')(props),
-      borderRadius: 'xl',
-    }),
-    filled: (props: Dict) => ({
-      backgroundColor: mode('white', 'black.2')(props),
-    }),
-  },
+  sizes,
+  variants,
 }
 
 export default Textarea
