@@ -14,7 +14,6 @@ query getAuthor($slug: String, $authorImageSize: Int = 220) {
           document: { output: { format: webp } }
         }
       )
-      url
     }
   }
 }

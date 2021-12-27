@@ -1,6 +1,4 @@
 import { useRouter } from 'next/router'
-import { Container, VStack, Box } from '@chakra-ui/react'
-import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
 import { BIDS_PER_PAGE } from '@/constants/items'
 import InnerPageContainer from '@/components/layout/inner-page-container'
 import SearchAndFiltersPanel from '@/components/search-and-filters-panel'
@@ -38,14 +36,16 @@ const BidsPage = ({ bids, search }: Props) => {
   )
 }
 
-BidsPage.getInitialProps = async ({
-  query: { search, slug, orderBy },
+export const getServerSideProps = async ({
+  query: { slug = '', search = '', orderBy },
 }: QueryProps) => {
-  const bids = (await getBids(BIDS_PER_PAGE, 0, search, slug, orderBy)) ?? []
+  const bids = (await getBids(BIDS_PER_PAGE, 0, slug, search, orderBy)) ?? []
   return {
-    bids,
-    search,
-    fallback: true,
+    props: {
+      bids,
+      search,
+      fallback: true,
+    },
   }
 }
 

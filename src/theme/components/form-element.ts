@@ -20,7 +20,7 @@ export const variants = {
     },
     _focus: {
       borderColor: mode('gray.1', 'black.1')(props),
-      boxShadow: '0 0px 6px rgba(0, 0, 0, 0.2)',
+      boxShadow: '0 0 6px rgba(0, 0, 0, 0.15)',
     },
   }),
   filled: (props: Dict) => ({

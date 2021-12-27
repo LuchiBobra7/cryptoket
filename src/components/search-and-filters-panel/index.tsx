@@ -9,13 +9,9 @@ type Props = ComponentProps<typeof HStack> & {
 
 const SearchAndFiltersPanel: FC<Props> = ({ title, children }) => {
   return (
-    <HStack spacing={7} w="full">
-      {title && <SectionTitle flex={1} mb={0} title={title} />}
-      {children && (
-        <Box flex={1} px={9}>
-          {children}
-        </Box>
-      )}
+    <HStack spacing={6} w="full">
+      {title && <SectionTitle flex={0.5} mb={0} title={title} />}
+      {children && <Box flex={1}>{children}</Box>}
       <SelectFilters ml="auto" />
     </HStack>
   )

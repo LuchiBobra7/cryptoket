@@ -9,25 +9,15 @@ import './index.css'
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter()
 
-  const [state, setState] = useState({
-    isRouteChanging: false,
-    loadingKey: 0,
-  })
+  const [isRouteChanging, setIsRouteChanging] = useState(false)
 
   useEffect(() => {
     const handleRouteChangeStart = () => {
-      setState((prevState) => ({
-        ...prevState,
-        isRouteChanging: true,
-        loadingKey: prevState.loadingKey ^ 1,
-      }))
+      setIsRouteChanging(true)
     }
 
     const handleRouteChangeEnd = () => {
-      setState((prevState) => ({
-        ...prevState,
-        isRouteChanging: false,
-      }))
+      setIsRouteChanging(false)
     }
 
     router.events.on('routeChangeStart', handleRouteChangeStart)
@@ -43,7 +33,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <Layout isRouteChanging={state.isRouteChanging} key={state.loadingKey}>
+      <Layout isRouteChanging={isRouteChanging}>
         <Component {...pageProps} />
       </Layout>
     </ChakraProvider>

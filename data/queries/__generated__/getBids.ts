@@ -6,7 +6,6 @@ import { GraphQLError } from 'graphql-request/dist/types';
 import { print } from 'graphql'
 import gql from 'graphql-tag';
 import { BidFragmentDoc } from './bidFragment';
-import { AuthorFragmentDoc } from './authorFragment';
 export type GetBidsQueryVariables = Types.Exact<{
   limit?: Types.InputMaybe<Types.Scalars['Int']>;
   skip?: Types.InputMaybe<Types.Scalars['Int']>;
@@ -14,15 +13,14 @@ export type GetBidsQueryVariables = Types.Exact<{
   search?: Types.InputMaybe<Types.Scalars['String']>;
   orderBy?: Types.InputMaybe<Types.BidOrderByInput>;
   bidImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
-  authorImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
 }>;
 
 
-export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, author?: { __typename?: 'Author', id: string, name: string, isVerified?: boolean | null | undefined, bgImage?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean } } };
+export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean } } };
 
 
 export const GetBidsDocument = gql`
-    query getBids($limit: Int, $skip: Int, $slug: String, $search: String, $orderBy: BidOrderByInput, $bidImageSize: Int = 202, $authorImageSize: Int = 80) {
+    query getBids($limit: Int = 8, $skip: Int = 0, $slug: String = "", $search: String = "", $orderBy: BidOrderByInput, $bidImageSize: Int = 202) {
   bidsConnection(
     orderBy: $orderBy
     first: $limit
@@ -33,18 +31,6 @@ export const GetBidsDocument = gql`
       node {
         ...bid
         slug
-        author {
-          ...author
-          bgImage {
-            thumbnail: url(
-              transformation: {image: {resize: {width: 1433, height: 308, fit: crop}}, document: {output: {format: webp}}}
-            )
-            blurDataURL: url(
-              transformation: {image: {resize: {width: 40, height: 20, fit: crop}}, document: {output: {format: webp}}}
-            )
-            url
-          }
-        }
       }
     }
     pageInfo {
@@ -53,8 +39,7 @@ export const GetBidsDocument = gql`
     }
   }
 }
-    ${BidFragmentDoc}
-${AuthorFragmentDoc}`;
+    ${BidFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
 

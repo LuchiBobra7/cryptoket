@@ -10,6 +10,7 @@ import Button from './components/button'
 import Input from './components/input'
 import Textarea from './components/textarea'
 import Card from './components/card'
+import Menu from './components/menu'
 
 const config = {
   initialColorMode: 'light',
@@ -49,6 +50,7 @@ const theme = extendTheme({
     Card,
     Container,
     Heading,
+    Menu,
   },
 })
 
