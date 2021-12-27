@@ -27,7 +27,7 @@ const Header = () => {
     <Box
       as="header"
       py={4}
-      borderBottomWidth={2}
+      boxShadow="0 2px 0 rgba(0, 0, 0, 0.05)"
       height={HEADER_HEIGHT}
       position="sticky"
       top={0}
@@ -44,7 +44,7 @@ const Header = () => {
           _hover={{ borderColor: searchBorderColor }}
           _focus={{
             borderColor: searchBorderColor,
-            boxShadow: '0 0px 6px rgba(0, 0, 0, 0.2)',
+            boxShadow: '0 0 7px rgba(0, 0, 0, 0.1)',
           }}
         />
         <Spacer />

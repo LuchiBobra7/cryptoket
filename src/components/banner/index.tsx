@@ -4,16 +4,17 @@ const Banner = () => {
   const circleStyles = {
     content: '""',
     position: 'absolute',
-    width: '36%',
-    height: '115%',
+    width: '40vmin',
+    height: '40vmin',
     borderRadius: '50%',
     background: 'whiteAlpha.400',
   }
   return (
     <Box
       bg="redLinear"
-      py={24}
+      py={{ base: 14, lg: 24 }}
       px={12}
+      w="full"
       borderRadius="3xl"
       position="relative"
       overflow="hidden"
@@ -29,7 +30,7 @@ const Banner = () => {
       }}
     >
       <Heading
-        fontSize={{ base: '2xl', md: '4xl', lg: '5xl' }}
+        fontSize={{ base: '2xl', md: '4xl', lg: '4xl', xl: '5xl' }}
         fontWeight="800"
         color="white"
       >

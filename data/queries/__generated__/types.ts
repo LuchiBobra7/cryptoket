@@ -726,6 +726,7 @@ export type AssetWhereUniqueInput = {
 export type Author = Node & {
   __typename?: 'Author';
   bgImage?: Maybe<Asset>;
+  bids: Array<Bid>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -757,6 +758,18 @@ export type Author = Node & {
 
 export type AuthorbgImageArgs = {
   locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type AuthorbidsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<BidOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<BidWhereInput>;
 };
 
 
@@ -823,7 +836,7 @@ export type AuthorConnection = {
 
 export type AuthorCreateInput = {
   bgImage?: InputMaybe<AssetCreateOneInlineInput>;
-  ckwuqcu6n5lz601yy8iioa0f0?: InputMaybe<BidCreateManyInlineInput>;
+  bids?: InputMaybe<BidCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   image?: InputMaybe<AssetCreateOneInlineInput>;
   income?: InputMaybe<Scalars['Float']>;
@@ -867,6 +880,9 @@ export type AuthorManyWhereInput = {
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
   bgImage?: InputMaybe<AssetWhereInput>;
+  bids_every?: InputMaybe<BidWhereInput>;
+  bids_none?: InputMaybe<BidWhereInput>;
+  bids_some?: InputMaybe<BidWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1017,7 +1033,7 @@ export enum AuthorOrderByInput {
 
 export type AuthorUpdateInput = {
   bgImage?: InputMaybe<AssetUpdateOneInlineInput>;
-  ckwuqcu6n5lz601yy8iioa0f0?: InputMaybe<BidUpdateManyInlineInput>;
+  bids?: InputMaybe<BidUpdateManyInlineInput>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
   income?: InputMaybe<Scalars['Float']>;
   isVerified?: InputMaybe<Scalars['Boolean']>;
@@ -1101,6 +1117,9 @@ export type AuthorWhereInput = {
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
   bgImage?: InputMaybe<AssetWhereInput>;
+  bids_every?: InputMaybe<BidWhereInput>;
+  bids_none?: InputMaybe<BidWhereInput>;
+  bids_some?: InputMaybe<BidWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;

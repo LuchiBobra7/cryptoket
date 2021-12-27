@@ -56,13 +56,15 @@ const HomePage = ({ authors, bids }: Props) => {
   )
 }
 
-HomePage.getInitialProps = async () => {
+export const getServerSideProps = async () => {
   const authors = (await getAuthors()) ?? []
   const bids = (await getBids()) ?? []
   return {
-    authors,
-    bids,
-    fallback: true,
+    props: {
+      authors,
+      bids,
+      fallback: true,
+    },
   }
 }
 

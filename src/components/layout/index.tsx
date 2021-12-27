@@ -7,10 +7,9 @@ import Footer from '@/components/layout/footer'
 
 type Props = PropsWithChildren<{
   isRouteChanging: boolean
-  loadingKey?: number
 }>
 
-const Layout = ({ children, isRouteChanging, loadingKey }: Props) => {
+const Layout = ({ children, isRouteChanging }: Props) => {
   return (
     <VStack
       flex={1}
@@ -21,7 +20,7 @@ const Layout = ({ children, isRouteChanging, loadingKey }: Props) => {
     >
       <Head />
       <Header />
-      <Loader isRouteChanging={isRouteChanging} key={loadingKey} />
+      <Loader isRouteChanging={isRouteChanging} />
       <Box as="main" flex={1} w="full">
         {children}
       </Box>

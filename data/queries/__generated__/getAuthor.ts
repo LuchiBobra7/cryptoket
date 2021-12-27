@@ -12,7 +12,7 @@ export type GetAuthorQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetAuthorQuery = { __typename?: 'Query', author?: { __typename?: 'Author', id: string, name: string, isVerified?: boolean | null | undefined, bgImage?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined };
+export type GetAuthorQuery = { __typename?: 'Query', author?: { __typename?: 'Author', id: string, name: string, isVerified?: boolean | null | undefined, bgImage?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined };
 
 
 export const GetAuthorDocument = gql`
@@ -26,7 +26,6 @@ export const GetAuthorDocument = gql`
       blurDataURL: url(
         transformation: {image: {resize: {width: 40, height: 20, fit: crop}}, document: {output: {format: webp}}}
       )
-      url
     }
   }
 }

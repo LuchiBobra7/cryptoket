@@ -20,11 +20,11 @@ const responsive = {
     items: 4,
   },
   tablet: {
-    breakpoint: { max: 768, min: 640 },
+    breakpoint: { max: 768, min: 540 },
     items: 3,
   },
   mobile: {
-    breakpoint: { max: 640, min: 360 },
+    breakpoint: { max: 540, min: 360 },
     items: 2,
   },
   base: {
@@ -67,18 +67,20 @@ const AuthorList = ({ items }: Props) =>
   !!items.length ? (
     <MagicCarousel
       position={'relative'}
+      display="flex"
       responsive={responsive}
       customLeftArrow={customLeftArrow}
       customRightArrow={customRightArrow}
       overflowX={{ base: 'auto', md: 'hidden' }}
       removeArrowOnDeviceType={['tablet', 'mobile', 'base']}
       minHeight="240px"
-      mr={{ base: -6, md: 0 }}
+      ml={{ base: 0, md: -3 }}
+      mr={{ base: -6, md: -3 }}
       pb={6}
       mb={-6}
     >
       {items?.map(({ node }, i) => (
-        <AuthorItem i={i} key={node.id} item={node} />
+        <AuthorItem i={i} key={node.id} item={node} mx={3} />
       ))}
     </MagicCarousel>
   ) : (
