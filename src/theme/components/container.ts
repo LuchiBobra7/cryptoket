@@ -1,7 +1,7 @@
 const Container = {
   baseStyle: {
     maxW: 'container.lg',
-    px: 6,
+    px: 4,
   },
 }
 

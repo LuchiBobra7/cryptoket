@@ -6,7 +6,7 @@ type Props = {
 
 const MenuHeader = ({ title }: Props) => {
   return (
-    <Heading fontSize="xl" lineHeight={1.7}>
+    <Heading fontSize="xl" lineHeight={1.7} w="full">
       {title}
     </Heading>
   )

@@ -3,12 +3,10 @@ import { sizes } from './form-element'
 const Button = {
   baseStyle: {
     fontWeight: 'bold',
-    boxShadow: 'sm',
   },
   sizes: {
     md: {
       ...sizes.md,
-      px: 6,
     },
   },
   variants: {

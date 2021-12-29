@@ -1,8 +1,5 @@
 export type Query = {
-  search?: any
-  orderBy?: string
-  page?: string | number
-  slug?: string
+  [x: string]: any
 }
 
 export type QueryProps = {

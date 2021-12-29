@@ -44,9 +44,9 @@ export const getBids = async (
     { limit, skip, slug, search, orderBy }
   )
 
-  const { edges, pageInfo } = result.bidsConnection ?? {}
+  const { edges, pageInfo, aggregate } = result.bidsConnection ?? {}
 
-  return { edges, pageInfo }
+  return { edges, pageInfo, aggregate }
 }
 
 export const getBidsSWR = async (slug: string) => {

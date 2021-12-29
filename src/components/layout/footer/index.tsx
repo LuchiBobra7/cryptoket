@@ -27,15 +27,16 @@ const Footer = () => {
       <Box py={6} borderTopWidth={2}>
         <Container
           as={HStack}
-          spacing={{ base: 0, lg: 12 }}
+          spacing={{ base: 0, lg: 4 }}
           alignItems="flex-start"
+          justifyContent="space-between"
           flexWrap="wrap"
         >
           <VStack
             alignItems="flex-start"
-            flex="2"
             minW={{ base: '100%', md: 'auto' }}
             mb={{ base: 7, md: 0 }}
+            flex={2}
             spacing={7}
           >
             <Logo isFullWidth />
@@ -58,11 +59,11 @@ const Footer = () => {
             </FormControl>
           </VStack>
 
-          <VStack alignItems="flex-start" flex="1" spacing={7}>
+          <VStack alignItems="flex-start" flex={1} spacing={7}>
             <MenuHeader title={SITE_NAME} />
             <Menu items={mainNavItems} />
           </VStack>
-          <VStack alignItems="flex-start" flex="1" spacing={7}>
+          <VStack alignItems="center" flex={1} spacing={7}>
             <MenuHeader title="Support" />
             <Menu items={legalInfoLinks} />
           </VStack>

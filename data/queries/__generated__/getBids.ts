@@ -16,7 +16,7 @@ export type GetBidsQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean } } };
+export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, pageSize?: number | null | undefined }, aggregate: { __typename?: 'Aggregate', count: number } } };
 
 
 export const GetBidsDocument = gql`
@@ -36,6 +36,10 @@ export const GetBidsDocument = gql`
     pageInfo {
       hasPreviousPage
       hasNextPage
+      pageSize
+    }
+    aggregate {
+      count
     }
   }
 }

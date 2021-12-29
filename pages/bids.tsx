@@ -11,9 +11,11 @@ import { QueryProps } from '@/types/query'
 type Props = {
   bids: BidListProps
   search: string
+  page: number | string
+  pagesQuantity: number | string
 }
 
-const BidsPage = ({ bids, search }: Props) => {
+const BidsPage = ({ bids, search, page, pagesQuantity }: Props) => {
   const { isFallback } = useRouter()
 
   if (isFallback) {
@@ -31,19 +33,31 @@ const BidsPage = ({ bids, search }: Props) => {
           !!search?.length ? `Search Results by title ${search}` : 'All Bids'
         }
       />
-      <BidList items={bids.edges} w="full" />
+      <BidList
+        items={bids.edges}
+        w="full"
+        pageInfo={bids.pageInfo}
+        activePage={page}
+        pagesQuantity={pagesQuantity}
+      />
     </InnerPageContainer>
   )
 }
 
 export const getServerSideProps = async ({
-  query: { slug = '', search = '', orderBy },
+  query: { page = 1, slug = '', search = '', orderBy },
 }: QueryProps) => {
-  const bids = (await getBids(BIDS_PER_PAGE, 0, slug, search, orderBy)) ?? []
+  const limit = BIDS_PER_PAGE
+  const skip = (Number(page) - 1) * limit
+  const bids = (await getBids(limit, skip, slug, search, orderBy)) ?? []
+  const { count: bidsQuantity } = bids?.aggregate ?? 0
+  const pagesQuantity = Math.ceil(bidsQuantity / limit) ?? 0
   return {
     props: {
       bids,
       search,
+      page,
+      pagesQuantity,
       fallback: true,
     },
   }
