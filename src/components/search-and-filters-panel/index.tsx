@@ -9,7 +9,7 @@ type Props = ComponentProps<typeof HStack> & {
 
 const SearchAndFiltersPanel: FC<Props> = ({ title, children }) => {
   return (
-    <HStack spacing={6} w="full">
+    <HStack spacing={6} w="full" justifyContent="space-between">
       {title && <SectionTitle flex={0.5} mb={0} title={title} />}
       {children && <Box flex={1}>{children}</Box>}
       <SelectFilters ml="auto" />

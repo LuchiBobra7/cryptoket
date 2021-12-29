@@ -21,6 +21,10 @@ query getBids(
     pageInfo {
       hasPreviousPage
       hasNextPage
+      pageSize
+    }
+    aggregate {
+      count
     }
   }
 }

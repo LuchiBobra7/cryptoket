@@ -19,7 +19,7 @@ export const removeEmptyParams = (obj: Query): Query => {
   return (
     Object.fromEntries(
       Object.entries(obj).filter(
-        ([_, item]: any) => item != null && item.trim() !== ''
+        ([_, item]: any) => item != null && item.toString().trim() !== ''
       )
     ) ?? {}
   )

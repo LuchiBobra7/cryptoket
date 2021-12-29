@@ -36,7 +36,12 @@ const Header = () => {
       backdropFilter="saturate(180%) blur(5px)"
       zIndex={2}
     >
-      <Container as={HStack} maxW="container.2xl" spacing={HEADER_GAP}>
+      <Container
+        as={HStack}
+        maxW="container.2xl"
+        //justifyContent="space-between"
+        spacing={HEADER_GAP}
+      >
         <Logo />
         <SearchBar
           bgColor={searchBg}
@@ -47,19 +52,23 @@ const Header = () => {
             boxShadow: '0 0 7px rgba(0, 0, 0, 0.1)',
           }}
         />
-        <Spacer />
+
         {isLargeScreen ? (
-          <HStack spacing={HEADER_GAP}>
-            <NavMenu />
-            <HeaderButtons />
-          </HStack>
+          <>
+            <Spacer />
+            <HStack spacing={HEADER_GAP}>
+              <NavMenu />
+              <HeaderButtons />
+            </HStack>
+          </>
         ) : (
           <IconButton
+            variant="unstyled"
             onClick={onToggle}
+            color="gray.3"
             icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+              isOpen ? <CloseIcon w={5} h={5} /> : <HamburgerIcon w={7} h={7} />
             }
-            variant={'ghost'}
             aria-label={'Toggle Navigation'}
           />
         )}

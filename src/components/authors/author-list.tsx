@@ -1,4 +1,4 @@
-import { IconButton } from '@chakra-ui/react'
+import { IconButton, Box } from '@chakra-ui/react'
 import AuthorItem from './author-item'
 import EmptyData from '@/components/empty-data'
 import MagicCarousel from '@/components/carousel'
@@ -80,7 +80,9 @@ const AuthorList = ({ items }: Props) =>
       mb={-6}
     >
       {items?.map(({ node }, i) => (
-        <AuthorItem i={i} key={node.id} item={node} mx={3} />
+        <Box mx={3}>
+          <AuthorItem i={i} key={node.id} item={node} />
+        </Box>
       ))}
     </MagicCarousel>
   ) : (

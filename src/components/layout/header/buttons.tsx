@@ -6,10 +6,10 @@ const HeaderButtons = () => {
   return (
     <HStack spacing={3}>
       <Button href={ROUTES.CREATE_BID} as={Link} variant="primary">
-        Create
+        Create Item
       </Button>
       <Button variant="outline" colorScheme="pink">
-        Connect
+        Connect Wallet
       </Button>
     </HStack>
   )

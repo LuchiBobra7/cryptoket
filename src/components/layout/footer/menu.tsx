@@ -8,7 +8,7 @@ const Menu = ({ items }: MenuItemsProps) => {
   const initialColor = useColorModeValue('black.2', 'whiteAlpha.800')
   const activeColor = useColorModeValue('pink.500', 'white')
   return (
-    <List spacing={4}>
+    <List spacing={4} w="full">
       {items.map((item, i) => (
         <ListItem key={i}>
           <NavLink

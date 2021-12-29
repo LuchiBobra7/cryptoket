@@ -6,6 +6,7 @@ import AuthorAvatar from '@/components/authors/author-avatar'
 import { AuthorListProps } from '@/types/authors'
 import { ROUTES } from '@/constants/routes'
 import { CURRENCY } from '@/constants/main'
+import { AUTHOR_IMAGE_SIZE } from '@/constants/images'
 
 type Props = ComponentProps<typeof LinkBox> & {
   item: AuthorListProps['edges'][0]['node']
@@ -13,7 +14,6 @@ type Props = ComponentProps<typeof LinkBox> & {
 }
 
 const AuthorItem: FC<Props> = ({ item, i, ...props }) => {
-  console.log(item)
   return (
     <LinkBox
       as={Card}
@@ -31,8 +31,9 @@ const AuthorItem: FC<Props> = ({ item, i, ...props }) => {
         width: 8,
         height: 8,
         margin: -2,
-        borderRadius: 'full',
+        borderRadius: '50%',
         background: 'pink.500',
+        fontSize: 'sm',
         color: 'white',
         display: 'flex',
         justifyContent: 'center',
@@ -45,6 +46,8 @@ const AuthorItem: FC<Props> = ({ item, i, ...props }) => {
       <AuthorAvatar
         image={item.image}
         isVerified={item.isVerified}
+        width={AUTHOR_IMAGE_SIZE.MD}
+        height={AUTHOR_IMAGE_SIZE.MD}
         mb={2}
         sx={{
           '& img': {

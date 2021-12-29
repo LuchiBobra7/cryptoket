@@ -7,22 +7,19 @@ import {
   MenuButton,
   MenuOptionGroup,
   Portal,
-  useColorModeValue,
   MenuList,
-  MenuItem,
   MenuItemOption,
-  Button,
 } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
-import { ROUTES } from '@/constants/routes'
-import { removeEmptyParams } from '@/utils/index'
+import usePushToQueries from '@/hooks/usePushToQueries'
 import { selectItems } from './filter-data'
 
 const SelectFilter = ({ ...props }) => {
-  const { push, asPath, query } = useRouter()
+  const { query } = useRouter()
   const selectedItem = selectItems.find((item) => query.orderBy === item.value)
+  const { setQueryParam } = usePushToQueries()
   return (
-    <Box flex={0.5} position="relative">
+    <Box flexBasis="230px" position="relative">
       <Menu matchWidth>
         {({ isOpen }) => (
           <>
@@ -47,16 +44,8 @@ const SelectFilter = ({ ...props }) => {
                 <MenuOptionGroup
                   value={query.orderBy || selectItems[0].value}
                   type="radio"
-                  onChange={(value) => {
-                    push({
-                      pathname: asPath.includes(ROUTES.AUTHOR)
-                        ? `${ROUTES.AUTHOR}/${query.slug}`
-                        : ROUTES.BIDS,
-                      query: removeEmptyParams({
-                        search: query.search,
-                        orderBy: value as string,
-                      }),
-                    })
+                  onChange={(value): void => {
+                    setQueryParam({ orderBy: value as string })
                   }}
                 >
                   {selectItems.map((item, i) => (
