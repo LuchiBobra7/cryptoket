@@ -8,8 +8,8 @@ import EmptyData from '@/components/empty-data'
 type Props = ComponentProps<typeof SimpleGrid> & {
   items: BidListProps['edges']
   pageInfo?: BidListProps['pageInfo']
-  activePage: string | number
-  pagesQuantity: string | number
+  activePage?: string | number
+  pagesQuantity?: string | number
 }
 
 const BidList: FC<Props> = ({
