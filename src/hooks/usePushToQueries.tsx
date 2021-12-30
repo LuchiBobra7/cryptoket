@@ -10,6 +10,7 @@ const usePushToQueries = () => {
   const [queryParam, setQueryParam] = useState<Props | null>(null)
   const { push, pathname, query } = useRouter()
   const currentPathname = pathname.replace('[slug]', query.slug as string)
+  const [path, setPath] = useState<string>(currentPathname)
   const { slug, ...currentQuery } = query
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const usePushToQueries = () => {
       const query = removeEmptyParams(newQuery)
       push(
         {
-          pathname: currentPathname,
+          pathname: path,
           query,
         },
         undefined,
@@ -27,7 +28,7 @@ const usePushToQueries = () => {
     }
   }, [queryParam])
 
-  return { queryParam, setQueryParam }
+  return { queryParam, setQueryParam, path, setPath }
 }
 
 export default usePushToQueries

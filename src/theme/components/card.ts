@@ -7,7 +7,6 @@ const Card = {
     flexDirection: 'column',
     background: mode('white', 'black.1')(props),
     alignItems: 'center',
-    gap: 6,
   }),
 
   variants: {

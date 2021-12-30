@@ -5,7 +5,7 @@ import * as Dom from 'graphql-request/dist/types.dom';
 import { GraphQLError } from 'graphql-request/dist/types';
 import { print } from 'graphql'
 import gql from 'graphql-tag';
-export type BidFragment = { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined };
+export type BidFragment = { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, image?: { __typename?: 'Asset', url: string, xs: string, thumbnail: string, blurDataURL: string } | null | undefined };
 
 export const BidFragmentDoc = gql`
     fragment bid on Bid {
@@ -15,6 +15,9 @@ export const BidFragmentDoc = gql`
   description
   image {
     url
+    xs: url(
+      transformation: {image: {resize: {width: $bidImageSizeXs, height: $bidImageSizeXs, fit: crop}}, document: {output: {format: webp}}}
+    )
     thumbnail: url(
       transformation: {image: {resize: {width: $bidImageSize, height: $bidImageSize, fit: crop}}, document: {output: {format: webp}}}
     )

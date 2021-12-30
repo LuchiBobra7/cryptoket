@@ -80,9 +80,7 @@ const AuthorList = ({ items }: Props) =>
       mb={-6}
     >
       {items?.map(({ node }, i) => (
-        <Box mx={3}>
-          <AuthorItem i={i} key={node.id} item={node} />
-        </Box>
+        <AuthorItem i={i} key={node.id} item={node} mx={3} />
       ))}
     </MagicCarousel>
   ) : (

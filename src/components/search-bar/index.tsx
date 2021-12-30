@@ -29,6 +29,7 @@ import { KEYS } from '@/constants/keys'
 import Link from '@/components/link'
 import { GetBidsDocument, GetBidsQuery } from '@/queries/getBids'
 import { SERVER_API_ENDPOINT } from 'config/env'
+import { BsFillImageFill } from 'react-icons/bs'
 
 type Props = ComponentProps<typeof Input> & {
   isLocal?: boolean
@@ -41,7 +42,9 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
   const { asPath, query } = useRouter()
 
   const [searchValue, setSearchValue] = useState<string>('')
-  const { setQueryParam } = usePushToQueries()
+
+  const { setQueryParam, setPath } = usePushToQueries()
+
   const slug = isLocal ? query.slug : ''
 
   const { data } = useSWR<GetBidsQuery>(
@@ -80,6 +83,7 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === KEYS.ENTER) {
+      if (!isLocal) setPath(ROUTES.BIDS)
       setQueryParam({ search: slugify(searchValue) })
       setIsOpenMenu(false)
     }
@@ -139,9 +143,9 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
                       borderTopWidth={1}
                     >
                       <Avatar
-                        name="Dan Abrahmov"
                         size="sm"
-                        src={node.image?.thumbnail}
+                        src={node.image?.xs}
+                        icon={<BsFillImageFill color="white" />}
                         mr={4}
                       />
                       <Text fontWeight="600" color="black.1">
@@ -156,9 +160,7 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
                   borderTopWidth={1}
                   _hover={{ bg: 'transparent', cursor: 'default' }}
                 >
-                  <Text fontWeight="500" color="black.1" fontSize="sm">
-                    Press Enter to see all results
-                  </Text>
+                  <Text fontSize="sm">Press Enter to see all results</Text>
                 </MenuItem>
               ) : null}
             </MenuGroup>

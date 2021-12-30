@@ -2,6 +2,7 @@ query getBid(
   $slug: String
   $authorImageSize: Int = 64
   $bidImageSize: Int = 440
+  $bidImageSizeXs: Int = 32
 ) {
   bid(where: { slug: $slug }) {
     ...bid
