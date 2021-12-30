@@ -5,6 +5,14 @@ fragment bid on Bid {
   description
   image {
     url
+    xs: url(
+      transformation: {
+        image: {
+          resize: { width: $bidImageSizeXs, height: $bidImageSizeXs, fit: crop }
+        }
+        document: { output: { format: webp } }
+      }
+    )
     thumbnail: url(
       transformation: {
         image: {

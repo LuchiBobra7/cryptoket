@@ -20,6 +20,7 @@ const AuthorItem: FC<Props> = ({ item, i, ...props }) => {
       className="author-card"
       position="relative"
       transition="box-shadow 0.2s ease-in"
+      gap={2}
       _hover={{
         boxShadow: 'lg',
       }}

@@ -25,12 +25,14 @@ const AuthorAvatar: FC<Props> = ({
     {isVerified && (
       <AvatarBadge
         boxSize="20%"
+        minW="18px"
+        minH="18px"
         bg="green.500"
         border="none"
         bottom="7%"
         right="7%"
       >
-        <CheckIcon w="50%" h="50%" color="black.1" />
+        <CheckIcon w="50%" h="50%" color="black.2" />
       </AvatarBadge>
     )}
   </Avatar>

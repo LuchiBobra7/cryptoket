@@ -14,7 +14,7 @@ const Menu = {
       },
 
       _hover: {
-        bg: mode('blackAlpha.50', 'whiteAlpha.50')(props),
+        bg: mode('gray.50', 'whiteAlpha.50')(props),
         color: mode('black.1', 'white')(props),
       },
     },

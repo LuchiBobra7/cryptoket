@@ -11,14 +11,15 @@ export type GetBidQueryVariables = Types.Exact<{
   slug?: Types.InputMaybe<Types.Scalars['String']>;
   authorImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
   bidImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
+  bidImageSizeXs?: Types.InputMaybe<Types.Scalars['Int']>;
 }>;
 
 
-export type GetBidQuery = { __typename?: 'Query', bid?: { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, author?: { __typename?: 'Author', id: string, name: string, isVerified?: boolean | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined };
+export type GetBidQuery = { __typename?: 'Query', bid?: { __typename?: 'Bid', id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, author?: { __typename?: 'Author', id: string, name: string, isVerified?: boolean | null | undefined, image?: { __typename?: 'Asset', thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined, image?: { __typename?: 'Asset', url: string, xs: string, thumbnail: string, blurDataURL: string } | null | undefined } | null | undefined };
 
 
 export const GetBidDocument = gql`
-    query getBid($slug: String, $authorImageSize: Int = 64, $bidImageSize: Int = 440) {
+    query getBid($slug: String, $authorImageSize: Int = 64, $bidImageSize: Int = 440, $bidImageSizeXs: Int = 32) {
   bid(where: {slug: $slug}) {
     ...bid
     author {

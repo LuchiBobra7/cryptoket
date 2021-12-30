@@ -13,14 +13,15 @@ export type GetBidsQueryVariables = Types.Exact<{
   search?: Types.InputMaybe<Types.Scalars['String']>;
   orderBy?: Types.InputMaybe<Types.BidOrderByInput>;
   bidImageSize?: Types.InputMaybe<Types.Scalars['Int']>;
+  bidImageSizeXs?: Types.InputMaybe<Types.Scalars['Int']>;
 }>;
 
 
-export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, image?: { __typename?: 'Asset', url: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, pageSize?: number | null | undefined }, aggregate: { __typename?: 'Aggregate', count: number } } };
+export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?: 'BidConnection', edges: Array<{ __typename?: 'BidEdge', node: { __typename?: 'Bid', slug?: string | null | undefined, id: string, price?: number | null | undefined, title?: string | null | undefined, description?: string | null | undefined, image?: { __typename?: 'Asset', url: string, xs: string, thumbnail: string, blurDataURL: string } | null | undefined } }>, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, pageSize?: number | null | undefined }, aggregate: { __typename?: 'Aggregate', count: number } } };
 
 
 export const GetBidsDocument = gql`
-    query getBids($limit: Int = 8, $skip: Int = 0, $slug: String = "", $search: String = "", $orderBy: BidOrderByInput, $bidImageSize: Int = 202) {
+    query getBids($limit: Int = 8, $skip: Int = 0, $slug: String = "", $search: String = "", $orderBy: BidOrderByInput, $bidImageSize: Int = 202, $bidImageSizeXs: Int = 32) {
   bidsConnection(
     orderBy: $orderBy
     first: $limit
