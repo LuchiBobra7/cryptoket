@@ -11,29 +11,6 @@ type Props = {
   items: AuthorListProps['edges']
 }
 
-const responsive = {
-  largeDesktop: {
-    breakpoint: { max: 4000, min: 1024 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 1024, min: 768 },
-    items: 4,
-  },
-  tablet: {
-    breakpoint: { max: 768, min: 540 },
-    items: 3,
-  },
-  mobile: {
-    breakpoint: { max: 540, min: 360 },
-    items: 2,
-  },
-  base: {
-    breakpoint: { max: 360, min: 0 },
-    items: 1,
-  },
-}
-
 const iconStyles = {
   variant: 'unstyled',
   zIndex: 1,
