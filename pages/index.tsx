@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { Box, Button } from '@chakra-ui/react'
 import { ROUTES } from '@/constants/routes'
+import { BIDS_PER_PAGE } from '@/constants/items'
 import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
 import InnerPageContainer from '@/components/layout/inner-page-container'
 import Link from '@/components/link'
@@ -37,20 +38,22 @@ const HomePage = ({ authors, bids }: Props) => {
         <AuthorList items={authors.edges} />
       </Box>
       <Box as="section" w="full">
-        <SectionTitle title="Hot Bids" />
+        <SectionTitle title="Latest Bids" />
         <BidList items={bids.edges} />
-        <Button
-          href={ROUTES.BIDS}
-          as={Link}
-          colorScheme="pink"
-          variant="outline"
-          display="flex"
-          w={240}
-          mt={V_SPACING_BETWEEN_PAGE_SECTIONS}
-          mx="auto"
-        >
-          View More
-        </Button>
+        {bids.aggregate.count > BIDS_PER_PAGE && (
+          <Button
+            href={ROUTES.BIDS}
+            as={Link}
+            colorScheme="pink"
+            variant="outline"
+            display="flex"
+            w={240}
+            mt={V_SPACING_BETWEEN_PAGE_SECTIONS}
+            mx="auto"
+          >
+            View More
+          </Button>
+        )}
       </Box>
     </InnerPageContainer>
   )

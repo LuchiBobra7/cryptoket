@@ -11,20 +11,14 @@
 ## Features 🔥
 
 - [x] Switch Dark/Light theme (in footer)
-- [x] Top Authors List (ordered by income) and Bids
+- [x] Top Authors List (ordered by income) and Bids (ordered by date)
 - [x] Author details
 - [x] Bid details
 - [x] Modal window for checkout (bid page)
-- [x] Simple search
+- [x] Search for all bids and author bids
 - [x] Sort bids by price and date
-- [ ] Dropdown list for main search (with author and bid groups)
-- [ ] Login with metamask
-- [ ] User profile
-- [ ] Upload item
-- [ ] Like/unlike item
-- [ ] Favorite items
-- [ ] Tablet and mobile version
-- [ ] Correct author income (price\*sales)
+- [x] Login with metamask (client-side only)
+- [ ] Upload item page
 
 ## Preview 👀
 

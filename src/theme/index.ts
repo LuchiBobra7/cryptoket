@@ -1,7 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { Dict } from '@chakra-ui/utils'
-import breakpoints from './breakpoints'
 import typography from './typography'
 import colors from './colors'
 import sizes from './sizes'
@@ -11,6 +10,8 @@ import Input from './components/input'
 import Textarea from './components/textarea'
 import Card from './components/card'
 import Menu from './components/menu'
+import Modal from './components/modal'
+import Table from './components/table'
 
 const config = {
   initialColorMode: 'light',
@@ -29,6 +30,7 @@ const theme = extendTheme({
         color: mode('gray.2', 'whiteAlpha.800')(props),
       },
       body: {
+        minWidth: '360px',
         bg: mode('white', 'black.4')(props),
         color: mode('black.2', 'gray.1')(props),
       },
@@ -37,7 +39,6 @@ const theme = extendTheme({
       },
     }),
   },
-  breakpoints,
   colors,
   fonts,
   fontSizes,
@@ -51,6 +52,8 @@ const theme = extendTheme({
     Container,
     Heading,
     Menu,
+    Modal,
+    Table,
   },
 })
 

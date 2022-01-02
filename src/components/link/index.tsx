@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import NextLink, { LinkProps } from 'next/link'
 import {
   Link as ChakraLink,
@@ -6,10 +7,10 @@ import {
 
 type Props = LinkProps & ChakraLinkProps
 
-const Link = ({ href, children, ...rest }: Props) => {
+const Link: FC<Props> = ({ href, children, ...props }) => {
   return (
     <NextLink href={href} passHref>
-      <ChakraLink _hover={{ textDecoration: 'none' }} {...rest}>
+      <ChakraLink _hover={{ textDecoration: 'none' }} {...props}>
         {children}
       </ChakraLink>
     </NextLink>

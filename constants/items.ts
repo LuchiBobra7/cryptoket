@@ -1,3 +1,3 @@
-export const AUTHORS_PER_PAGE = 10
+export const AUTHORS_PER_PAGE = 20
 
-export const BIDS_PER_PAGE = 8
+export const BIDS_PER_PAGE = 12

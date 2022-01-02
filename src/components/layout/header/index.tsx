@@ -20,8 +20,8 @@ import HeaderButtons from './buttons'
 const Header = () => {
   const { isLargeScreen } = useBreakpoint()
   const { isOpen, onToggle } = useDisclosure()
-  const headerBg = useColorModeValue('white', 'black.1')
-  const searchBg = useColorModeValue('white', 'black.4')
+  const headerBg = useColorModeValue('whiteAlpha.900', 'black.1')
+  const searchBg = useColorModeValue('transparent', 'black.4')
   const searchBorderColor = useColorModeValue('gray.1', 'black.4')
   return (
     <Box
@@ -32,16 +32,10 @@ const Header = () => {
       position="sticky"
       top={0}
       backgroundColor={headerBg}
-      filter="opacity(94%)"
-      backdropFilter="saturate(180%) blur(5px)"
+      backdropFilter="saturate(180%) blur(7px)"
       zIndex={2}
     >
-      <Container
-        as={HStack}
-        maxW="container.2xl"
-        //justifyContent="space-between"
-        spacing={HEADER_GAP}
-      >
+      <Container as={HStack} maxW="container.2xl" spacing={HEADER_GAP}>
         <Logo />
         <SearchBar
           bgColor={searchBg}
@@ -52,20 +46,16 @@ const Header = () => {
             boxShadow: '0 0 7px rgba(0, 0, 0, 0.1)',
           }}
         />
-
+        <Spacer />
         {isLargeScreen ? (
-          <>
-            <Spacer />
-            <HStack spacing={HEADER_GAP}>
-              <NavMenu />
-              <HeaderButtons />
-            </HStack>
-          </>
+          <HStack spacing={HEADER_GAP}>
+            <NavMenu />
+            <HeaderButtons />
+          </HStack>
         ) : (
           <IconButton
             variant="unstyled"
             onClick={onToggle}
-            color="gray.3"
             icon={
               isOpen ? <CloseIcon w={5} h={5} /> : <HamburgerIcon w={7} h={7} />
             }

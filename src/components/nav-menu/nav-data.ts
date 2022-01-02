@@ -11,10 +11,6 @@ const navItems = [
     href: BIDS,
     title: 'Explore',
   },
-  {
-    href: MY_BIDS,
-    title: 'My items',
-  },
 ]
 
 export default navItems

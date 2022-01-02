@@ -24,6 +24,7 @@ const AuthorItem: FC<Props> = ({ item, i, ...props }) => {
       _hover={{
         boxShadow: 'lg',
       }}
+      mb={6}
       _before={{
         content: `"${i + 1}"`,
         alignSelf: 'flex-start',
@@ -64,7 +65,7 @@ const AuthorItem: FC<Props> = ({ item, i, ...props }) => {
           {item.name}
         </LinkOverlay>
       </Heading>
-      <Heading fontSize="md">
+      <Heading fontSize="md" whiteSpace="nowrap" isTruncated>
         {item.income}
         {'  '}
         <Text as="span" fontWeight="normal">

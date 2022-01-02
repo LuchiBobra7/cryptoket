@@ -21,7 +21,8 @@
       "@/hooks/*": ["src/hooks/*"],
       "@/data/*": ["data/*"],
       "@/queries/*": ["data/queries/__generated__/*"],
-      "@/constants/*": ["constants/*"]
+      "@/constants/*": ["constants/*"],
+      "@/context/*": ["context/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

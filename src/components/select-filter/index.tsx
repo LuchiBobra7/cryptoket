@@ -19,7 +19,7 @@ const SelectFilter = ({ ...props }) => {
   const selectedItem = selectItems.find((item) => query.orderBy === item.value)
   const { setQueryParam } = usePushToQueries()
   return (
-    <Box flexBasis="230px" position="relative">
+    <Box position="relative">
       <Menu matchWidth>
         {({ isOpen }) => (
           <>
