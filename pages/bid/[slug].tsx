@@ -25,7 +25,10 @@ import ErrorMessage from '@/components/error-message'
 import CheckoutModal from '@/components/checkout-modal'
 import { getBid, getBids } from '@/data/index'
 import { ROUTES } from '@/constants/routes'
-import { V_SPACING_BETWEEN_PAGE_SECTIONS } from '@/constants/layout'
+import {
+  V_SPACING_BETWEEN_PAGE_SECTIONS,
+  BUTTONS_GAP,
+} from '@/constants/layout'
 import { AUTHOR_IMAGE_SIZE } from '@/constants/images'
 import { CURRENCY } from '@/constants/main'
 import { BidDetailsProps } from '@/types/bids'
@@ -114,15 +117,15 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
                 </Text>
               </TabPanel>
               <TabPanel px={0}>
-                <Text>offers</Text>
+                <Text>No offers</Text>
               </TabPanel>
               <TabPanel px={0}>
-                <Text>history</Text>
+                <Text>History is empty</Text>
               </TabPanel>
             </TabPanels>
           </Tabs>
 
-          <HStack spacing={4} w="full">
+          <HStack spacing={BUTTONS_GAP} w="full">
             <Button variant="primary" flex={1} onClick={onOpen}>
               Buy for {bidDetails.price} {CURRENCY}
             </Button>

@@ -24,6 +24,7 @@ import {
 import Image from '@/components/image'
 import { BidDetailsProps } from '@/types/bids'
 import { CURRENCY } from '@/constants/main'
+import { BUTTONS_GAP } from '@/constants/layout'
 
 type Props = {
   bidDetails: BidDetailsProps['bid']
@@ -41,7 +42,6 @@ const CheckoutModal = ({ bidDetails, isOpen, onClose }: Props) => {
             display="flex"
             justifyContent="center"
             borderBottomWidth={1}
-            py={6}
           >
             Check Out
           </ModalHeader>
@@ -98,14 +98,15 @@ const CheckoutModal = ({ bidDetails, isOpen, onClose }: Props) => {
           </ModalBody>
           <ModalFooter
             as={HStack}
+            spacing={BUTTONS_GAP}
             justifyContent="center"
             borderTopWidth={1}
-            py={6}
           >
-            <Button variant="primary" mr={3} borderRadius="xl">
+            <Button variant="primary" borderRadius="xl" minW="120px">
               Checkout
             </Button>
             <Button
+              minW="120px"
               colorScheme="pink"
               variant="outline"
               borderRadius="xl"

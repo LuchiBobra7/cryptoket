@@ -18,8 +18,9 @@ import {
   MenuGroup,
   MenuItem,
   Avatar,
-  useOutsideClick,
   Text,
+  useOutsideClick,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { RiSearchLine, RiCloseFill } from 'react-icons/ri'
 import usePushToQueries from '@/hooks/usePushToQueries'
@@ -94,6 +95,8 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
     setIsOpenMenu(false)
   }
   const menuTitle = `${isLocal ? 'Author' : 'All'} bids`
+
+  const menuColor = useColorModeValue('black.1', 'whiteAlpha.900')
   return (
     <HStack width="full" maxW={!isFullWidth ? '2xl' : 'full'} ref={internalRef}>
       <Menu matchWidth isOpen={isOpenMenu} offset={[0, 4]}>
@@ -128,7 +131,7 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
 
             <MenuGroup
               title={!!searchResultsList?.aggregate?.count ? menuTitle : ''}
-              color="black.1"
+              color={menuColor}
               fontSize="sm"
             >
               {searchResultsList?.aggregate?.count === 0 ? (
@@ -148,7 +151,7 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
                         icon={<BsFillImageFill color="white" />}
                         mr={4}
                       />
-                      <Text fontWeight="600" color="black.1">
+                      <Text fontWeight="600" color={menuColor}>
                         {node.title}
                       </Text>
                     </MenuItem>
@@ -160,7 +163,9 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
                   borderTopWidth={1}
                   _hover={{ bg: 'transparent', cursor: 'default' }}
                 >
-                  <Text fontSize="sm">Press Enter to see all results</Text>
+                  <Text fontSize="sm" color={menuColor}>
+                    Press Enter to see all results
+                  </Text>
                 </MenuItem>
               ) : null}
             </MenuGroup>
