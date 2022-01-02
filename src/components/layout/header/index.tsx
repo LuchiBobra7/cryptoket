@@ -47,14 +47,16 @@ const Header = () => {
           }}
         />
         <Spacer />
-        {isLargeScreen ? (
+        {isLargeScreen && (
           <HStack spacing={HEADER_GAP}>
             <NavMenu />
             <HeaderButtons />
           </HStack>
-        ) : (
+        )}
+        {!isLargeScreen && (
           <IconButton
             variant="unstyled"
+            display={{ lg: 'none' }}
             onClick={onToggle}
             icon={
               isOpen ? <CloseIcon w={5} h={5} /> : <HamburgerIcon w={7} h={7} />
