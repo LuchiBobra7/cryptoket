@@ -16,9 +16,6 @@ export const UserContext = React.createContext<AppContextInterface | null>(null)
 
 export const UserProvider: FC = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState<string | null>(null)
-  useEffect(() => {
-    connectWallet()
-  }, [])
   const connectWallet = async () => {
     try {
       if (!window?.ethereum) return alert('Please install MetaMask.')

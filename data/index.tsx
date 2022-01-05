@@ -1,10 +1,11 @@
 import useSWR from 'swr'
 import { request } from 'graphql-request'
-import { SERVER_API_ENDPOINT } from 'config/env'
+import { SERVER_API_ENDPOINT } from '@/config/env'
 import { GetAuthorsDocument, GetAuthorsQuery } from '@/queries/getAuthors'
-import { GetAuthorDocument, GetAuthorQuery } from '@/queries//getAuthor'
+import { GetAuthorDocument, GetAuthorQuery } from '@/queries/getAuthor'
 import { GetBidsDocument, GetBidsQuery } from '@/queries/getBids'
 import { GetBidDocument, GetBidQuery } from '@/queries/getBid'
+import { CreateBidDocument, CreateBidMutation } from '@/queries/createBid'
 import { BIDS_PER_PAGE, AUTHORS_PER_PAGE } from '@/constants/items'
 
 export const getAuthors = async (limit: number = AUTHORS_PER_PAGE) => {
@@ -27,7 +28,6 @@ export const getAuthor = async (slug: string) => {
       slug,
     }
   )
-
   return result.author
 }
 
@@ -65,7 +65,35 @@ export const getBid = async (slug: string) => {
     { slug }
   )
 
-  const { bid } = result || {}
+  const { bid } = result ?? {}
 
   return bid
+}
+
+export const uploadFile = async (formData: any) => {
+  const result = await fetch(`${SERVER_API_ENDPOINT}/upload`, {
+    method: 'POST',
+    body: formData,
+  })
+  return result.json()
+}
+
+export const createBid = async (
+  title: string,
+  description: string,
+  price: number,
+  imageId: string
+) => {
+  const result = await request<CreateBidMutation>(
+    SERVER_API_ENDPOINT,
+    CreateBidDocument,
+    {
+      title,
+      description,
+      price,
+      imageId,
+    }
+  )
+
+  return result
 }
