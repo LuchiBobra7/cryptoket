@@ -5,13 +5,9 @@ module.exports = {
   reactStrictMode: true,
   publicRuntimeConfig: {
     SERVER_API_ENDPOINT: process.env.SERVER_API_ENDPOINT,
+    GRAPHCMS_TOKEN: process.env.GRAPHCMS_TOKEN,
   },
   images: {
-    domains: [
-      'via.placeholder.com',
-      'bit.ly',
-      'cdn.pixabay.com',
-      'media.graphcms.com',
-    ],
+    domains: ['media.graphcms.com'],
   },
 }

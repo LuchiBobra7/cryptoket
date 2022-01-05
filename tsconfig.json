@@ -22,7 +22,8 @@
       "@/data/*": ["data/*"],
       "@/queries/*": ["data/queries/__generated__/*"],
       "@/constants/*": ["constants/*"],
-      "@/context/*": ["context/*"]
+      "@/context/*": ["context/*"],
+      "@/config/*": ["config/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

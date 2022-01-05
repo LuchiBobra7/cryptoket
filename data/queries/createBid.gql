@@ -1,0 +1,19 @@
+mutation createBid(
+  $title: String
+  $description: String
+  $price: Float
+  $imageId: ID
+) {
+  createBid(
+    data: {
+      title: $title
+      description: $description
+      price: $price
+      image: { connect: { id: $imageId } }
+    }
+  ) {
+    title
+    description
+    price
+  }
+}

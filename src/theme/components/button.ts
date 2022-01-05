@@ -18,8 +18,12 @@ const Button = {
       _hover: {
         backgroundPosition: 'right center',
         boxShadow: '0 1px 7px rgba(235, 20, 132, 0.2)',
+        '&[disabled]': {
+          bg: 'pink.500',
+        },
       },
     },
+
     outline: {
       color: 'rgba(235, 20, 132, 0.8)',
       _hover: {

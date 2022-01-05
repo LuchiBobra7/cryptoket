@@ -3,7 +3,7 @@ import { Icon } from '@chakra-ui/react'
 
 const Image: FC = ({ ...props }) => {
   return (
-    <Icon viewBox="0 0 115 115" width="115" height="115" fill="none" {...props}>
+    <Icon viewBox="0 0 115 115" fill="none" {...props}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
