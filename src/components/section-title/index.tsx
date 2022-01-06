@@ -6,7 +6,11 @@ type Props = {
 }
 
 const SectionTitle = ({ title, ...props }: Props) => (
-  <Heading fontSize="3xl" mb={10} {...props}>
+  <Heading
+    fontSize={{ base: '2xl', lg: '3xl' }}
+    mb={{ base: 4, lg: 10 }}
+    {...props}
+  >
     {title}
   </Heading>
 )

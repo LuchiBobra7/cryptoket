@@ -98,7 +98,11 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
 
   const menuColor = useColorModeValue('black.1', 'whiteAlpha.900')
   return (
-    <HStack width="full" maxW={!isFullWidth ? '2xl' : 'full'} ref={internalRef}>
+    <HStack
+      width="full"
+      maxW={{ lg: !isFullWidth ? '2xl' : 'full' }}
+      ref={internalRef}
+    >
       <Menu matchWidth isOpen={isOpenMenu} offset={[0, 4]}>
         <MenuButton as={Box} w="full" onClick={(e) => e.preventDefault()}>
           <InputGroup pointerEvents="visible">

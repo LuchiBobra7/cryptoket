@@ -13,9 +13,8 @@
     "@chakra-ui/theme-tools": "1.1.2",
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
-    "@types/react-slick": "^0.23.8",
-    "add": "^2.0.6",
     "dotenv": "^10.0.0",
+    "embla-carousel-react": "^6.0.2",
     "ethers": "^5.5.2",
     "framer-motion": "^4.0.3",
     "graphql": "^16.0.1",
@@ -27,7 +26,6 @@
     "react-dropzone": "^11.4.2",
     "react-hook-form": "^7.22.5",
     "react-icons": "^4.3.1",
-    "react-slick": "^0.28.1",
     "swr": "^1.1.2-beta.0"
   },
   "devDependencies": {
