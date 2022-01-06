@@ -24,7 +24,7 @@ const Footer = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Box as="footer">
-      <Box py={6} borderTopWidth={2}>
+      <Box py={9} borderTopWidth={2}>
         <Container
           as={HStack}
           spacing={{ base: 0, lg: 4 }}
@@ -36,13 +36,13 @@ const Footer = () => {
             alignItems="flex-start"
             minW={{ base: '100%', md: 'auto' }}
             mb={{ base: 7, md: 0 }}
-            flex={2}
+            flex={2.5}
             spacing={7}
           >
             <Logo isFullWidth />
             <Heading fontSize="md">Get the latest Updates</Heading>
-            <HStack spacing={-5} maxW="70%">
-              <Input placeholder="Email me" type="email" borderRadius="lg" />
+            <HStack spacing={-5} maxW={{ md: '75%' }}>
+              <Input placeholder="Email me" type="email" />
               <Button variant="primary" zIndex="1">
                 Email me
               </Button>
@@ -69,7 +69,7 @@ const Footer = () => {
           </VStack>
         </Container>
       </Box>
-      <Box py={6} borderTopWidth={1}>
+      <Box py={6} borderTopWidth={2}>
         <Container
           as={HStack}
           justifyContent={{ base: 'center', lg: 'space-between' }}

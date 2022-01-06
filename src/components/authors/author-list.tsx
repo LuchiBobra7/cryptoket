@@ -1,83 +1,101 @@
-import { useState, useRef } from 'react'
-import Slider from 'react-slick'
-import { IconButton, Box } from '@chakra-ui/react'
+import { useState, useEffect, useCallback } from 'react'
+import { Grid, IconButton, Box } from '@chakra-ui/react'
+import useEmblaCarousel from 'embla-carousel-react'
 import AuthorItem from './author-item'
 import EmptyData from '@/components/empty-data'
 import ArrowLeftCircle from '@/components/icon/arrow-left-circle'
 import ArrowRightCircle from '@/components/icon/arrow-right-circle'
 import { AuthorListProps } from '@/types/authors'
+import useBreakpoint from '@/hooks/useBreakpoint'
 
 type Props = {
   items: AuthorListProps['edges']
 }
 
-const iconStyles = {
-  variant: 'unstyled',
-  zIndex: 1,
-  position: 'absolute',
-  opacity: '0.8',
-  top: '50%',
-  transform: 'translateY(-50%)',
-  _hover: {
-    opacity: 1,
-  },
+type CarouselButtonsProps = {
+  enabled: boolean
+  onClick: () => void
 }
 
-const settings = {
-  dots: false,
-  arrows: false,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 5,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 868,
-      settings: {
-        slidesToShow: 4,
-      },
-    },
-    {
-      breakpoint: 680,
-      settings: {
-        slidesToShow: 3,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-      },
-    },
-    {
-      breakpoint: 360,
-      settings: {
-        slidesToShow: 1,
-      },
-    },
-  ],
+const styles = {
+  variant: 'unstyled',
+  zIndex: 0,
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+}
+
+const PrevButton = ({ enabled, onClick }: CarouselButtonsProps) => (
+  <IconButton
+    aria-label="arrow-left"
+    __css={styles}
+    left={0}
+    ml={-1}
+    display={{ base: 'none', lg: 'block' }}
+    onClick={onClick}
+    opacity={enabled ? 0.7 : 0}
+    icon={<ArrowLeftCircle />}
+  />
+)
+
+const NextButton = ({ enabled, onClick }: CarouselButtonsProps) => {
+  return (
+    <IconButton
+      aria-label="arrow-right"
+      __css={styles}
+      right={0}
+      mr={-1}
+      display={{ base: 'none', lg: 'block' }}
+      onClick={onClick}
+      opacity={enabled ? 0.7 : 0}
+      icon={<ArrowRightCircle />}
+    />
+  )
 }
 
 const AuthorList = ({ items }: Props) => {
-  const [slider, setSlider] = useState<Slider | null>(null)
+  const { isLargeScreen } = useBreakpoint()
+
+  const [viewportRef, embla] = useEmblaCarousel({
+    align: 'start',
+    skipSnaps: false,
+  })
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
+
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
+
+  const onSelect = useCallback(() => {
+    if (!embla) return
+    setPrevBtnEnabled(embla.canScrollPrev())
+    setNextBtnEnabled(embla.canScrollNext())
+  }, [embla])
+
+  useEffect(() => {
+    if (!embla) return
+    onSelect()
+    embla.on('select', onSelect)
+    setPrevBtnEnabled(embla.canScrollPrev())
+    setNextBtnEnabled(embla.canScrollNext())
+  }, [embla, onSelect])
+
   if (!items.length) return <EmptyData />
   return (
-    <Box position={'relative'} width={'full'} overflow="hidden">
-      {/* CSS files for react-slick */}
-      <link
-        rel="stylesheet"
-        type="text/css"
-        charSet="UTF-8"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-      />
-
-      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+    <Box
+      ref={viewportRef}
+      overflowX={{ base: 'auto', lg: 'hidden' }}
+      position="relative"
+      px={3}
+      mx={-3}
+    >
+      <Grid templateColumns="repeat(20, minmax(179px, 1fr))" gap="24px">
         {items?.map(({ node }, i) => (
-          <Box key={node.id}>
-            <AuthorItem i={i} item={node} mx={3} />
-          </Box>
+          <AuthorItem key={node.id} i={i} item={node} />
         ))}
-      </Slider>
+      </Grid>
+      <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+      <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
     </Box>
   )
 }

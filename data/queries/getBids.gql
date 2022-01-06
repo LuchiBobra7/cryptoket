@@ -1,5 +1,5 @@
 query getBids(
-  $limit: Int = 8
+  $limit: Int = 12
   $skip: Int = 0
   $slug: String = ""
   $search: String = ""

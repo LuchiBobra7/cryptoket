@@ -21,9 +21,8 @@ const AuthorItem: FC<Props> = ({ item, i, ...props }) => {
       position="relative"
       transition="box-shadow 0.2s ease-in"
       gap={2}
-      mb={6}
       _hover={{
-        boxShadow: 'lg',
+        boxShadow: 'inner',
       }}
       _before={{
         content: `"${i + 1}"`,

@@ -30,7 +30,7 @@ const theme = extendTheme({
         color: mode('gray.2', 'whiteAlpha.800')(props),
       },
       body: {
-        minWidth: '360px',
+        overflowX: 'hidden',
         bg: mode('white', 'black.4')(props),
         color: mode('black.2', 'gray.1')(props),
       },

@@ -38,46 +38,47 @@ const BidList: FC<Props> = ({
     setQueryParam({ page: val })
   }
 
+  const PaginationButton = ({ ...props }) => (
+    <Button
+      variant={'ghost'}
+      colorScheme="pink"
+      borderRadius="50%"
+      size="sm"
+      {...props}
+    ></Button>
+  )
+
   return !!items.length ? (
     <>
-      <SimpleGrid
-        columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
-        spacing={6}
-        {...props}
-      >
+      <SimpleGrid columns={{ base: 2, md: 3, lg: 4 }} spacing={6} {...props}>
         {items.map(({ node }) => (
           <BidItem key={node.id} item={node} />
         ))}
       </SimpleGrid>
       {hasPagination && (
         <HStack justify="center" w="full" spacing={2}>
-          <Button
-            variant={'ghost'}
-            colorScheme="pink"
+          <PaginationButton
             onClick={() => decreasePage()}
             disabled={!hasPreviousPage}
           >
             {'<'}
-          </Button>
+          </PaginationButton>
           {[...new Array(pagesQuantity)].map((_, i) => (
-            <Button
+            <PaginationButton
               key={i}
               variant={Number(activePage) === i + 1 ? 'primary' : 'ghost'}
-              colorScheme="pink"
               onClick={() => setPage(i + 1)}
             >
               {i + 1}
-            </Button>
+            </PaginationButton>
           ))}
 
-          <Button
-            variant="ghost"
-            colorScheme="pink"
+          <PaginationButton
             onClick={() => increasePage()}
             disabled={!hasNextPage}
           >
             {'>'}
-          </Button>
+          </PaginationButton>
         </HStack>
       )}
     </>

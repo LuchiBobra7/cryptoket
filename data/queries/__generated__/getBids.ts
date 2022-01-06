@@ -21,7 +21,7 @@ export type GetBidsQuery = { __typename?: 'Query', bidsConnection: { __typename?
 
 
 export const GetBidsDocument = gql`
-    query getBids($limit: Int = 8, $skip: Int = 0, $slug: String = "", $search: String = "", $orderBy: BidOrderByInput, $bidImageSize: Int = 202, $bidImageSizeXs: Int = 32) {
+    query getBids($limit: Int = 12, $skip: Int = 0, $slug: String = "", $search: String = "", $orderBy: BidOrderByInput, $bidImageSize: Int = 202, $bidImageSizeXs: Int = 32) {
   bidsConnection(
     orderBy: $orderBy
     first: $limit

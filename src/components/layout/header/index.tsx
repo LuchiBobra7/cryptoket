@@ -37,6 +37,7 @@ const Header = () => {
     >
       <Container as={HStack} maxW="container.2xl" spacing={HEADER_GAP}>
         <Logo />
+
         <SearchBar
           bgColor={searchBg}
           borderColor={searchBorderColor}
@@ -46,18 +47,23 @@ const Header = () => {
             boxShadow: '0 0 7px rgba(0, 0, 0, 0.1)',
           }}
         />
-        <Spacer />
+
         {isLargeScreen && (
-          <HStack spacing={HEADER_GAP}>
-            <NavMenu />
-            <HeaderButtons />
-          </HStack>
+          <>
+            <Spacer />
+            <HStack spacing={HEADER_GAP}>
+              <NavMenu />
+              <HeaderButtons />
+            </HStack>
+          </>
         )}
         {!isLargeScreen && (
           <IconButton
             variant="unstyled"
+            size="28px"
             display={{ lg: 'none' }}
             onClick={onToggle}
+            color={useColorModeValue('gray.3', 'white')}
             icon={
               isOpen ? <CloseIcon w={5} h={5} /> : <HamburgerIcon w={7} h={7} />
             }

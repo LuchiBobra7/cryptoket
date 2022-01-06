@@ -1,4 +1,3 @@
-import useSWR from 'swr'
 import { request } from 'graphql-request'
 import { SERVER_API_ENDPOINT } from '@/config/env'
 import { GetAuthorsDocument, GetAuthorsQuery } from '@/queries/getAuthors'
@@ -47,15 +46,6 @@ export const getBids = async (
   const { edges, pageInfo, aggregate } = result.bidsConnection ?? {}
 
   return { edges, pageInfo, aggregate }
-}
-
-export const getBidsSWR = async (slug: string) => {
-  const { data } = useSWR<GetBidsQuery>([GetBidsDocument], (query) =>
-    request(SERVER_API_ENDPOINT, query, { slug })
-  )
-  const result = data?.bidsConnection ?? []
-
-  return result
 }
 
 export const getBid = async (slug: string) => {

@@ -51,7 +51,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
     <Container alignItems="flex-start">
       <SimpleGrid columns={{ md: 2 }} spacing={0}>
         <Box
-          py={V_SPACING_BETWEEN_PAGE_SECTIONS}
+          pt={V_SPACING_BETWEEN_PAGE_SECTIONS}
           pr={{ md: 12 }}
           flex={1}
           justifyContent="flex-end"
@@ -74,7 +74,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
         </Box>
         <VStack
           alignItems="flex-start"
-          py={V_SPACING_BETWEEN_PAGE_SECTIONS}
+          pt={V_SPACING_BETWEEN_PAGE_SECTIONS}
           spacing={4}
           pl={{ md: 7 }}
           borderLeftWidth={{ md: 3 }}
