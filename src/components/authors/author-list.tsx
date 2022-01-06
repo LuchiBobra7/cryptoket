@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Grid, IconButton, Box } from '@chakra-ui/react'
 import useEmblaCarousel from 'embla-carousel-react'
 import AuthorItem from './author-item'
+import { AUTHORS_PER_PAGE } from '@/constants/items'
 import EmptyData from '@/components/empty-data'
 import ArrowLeftCircle from '@/components/icon/arrow-left-circle'
 import ArrowRightCircle from '@/components/icon/arrow-right-circle'
@@ -58,7 +59,7 @@ const AuthorList = ({ items }: Props) => {
 
   const [viewportRef, embla] = useEmblaCarousel({
     align: 'start',
-    skipSnaps: false,
+    slidesToScroll: 5,
   })
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
@@ -89,7 +90,10 @@ const AuthorList = ({ items }: Props) => {
       px={3}
       mx={-3}
     >
-      <Grid templateColumns="repeat(20, minmax(179px, 1fr))" gap="24px">
+      <Grid
+        templateColumns={`repeat(${AUTHORS_PER_PAGE}, minmax(179px, 1fr))`}
+        gap="24px"
+      >
         {items?.map(({ node }, i) => (
           <AuthorItem key={node.id} i={i} item={node} />
         ))}
