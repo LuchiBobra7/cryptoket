@@ -28,6 +28,26 @@ export const removeEmptyParams = (obj: Query): Query => {
 export const shortenAddress = (address: string) =>
   `${address.slice(0, 5)}...${address.slice(address.length - 4)}`
 
+export const shortenPagination = (
+  totalQuantity: number,
+  maxPageSize: number,
+  currentPage: number
+) => {
+  const paginationArray = [...new Array(totalQuantity)].map((_, i) => i + 1)
+  let shortenArr = []
+  if (currentPage < maxPageSize) {
+    shortenArr = paginationArray.slice(0, maxPageSize)
+    if (totalQuantity > maxPageSize) return [...shortenArr, '...']
+    else return shortenArr
+  } else {
+    shortenArr = paginationArray.slice(
+      currentPage - 1,
+      maxPageSize + currentPage - 1
+    )
+    return ['...', ...shortenArr]
+  }
+}
+
 export const formatBytes = (bytes: number, decimals = 2) => {
   if (bytes === 0) return '0 Bytes'
 

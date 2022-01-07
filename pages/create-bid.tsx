@@ -5,6 +5,8 @@ import {
   VStack,
   FormControl,
   FormLabel,
+  FormHelperText,
+  FormErrorMessage,
   Input,
   NumberInput,
   NumberInputField,
@@ -36,7 +38,7 @@ type FormValues = {
 type ErrorValues = {
   label: string
   title: string
-  requirmentsText?: string
+  requirements?: string
 }
 
 const CreateBidPage = () => {
@@ -69,33 +71,28 @@ const CreateBidPage = () => {
     },
   })
 
-  const ErrorText: FC = ({ children }) => (
-    <Text color="red.500" fontSize="sm" mt={2}>
-      {children}
-    </Text>
-  )
-
-  const ErrorMessage = ({ label, title, requirmentsText }: ErrorValues) => {
+  const ErrorMessage = ({
+    label,
+    title,
+    requirements: requirements,
+  }: ErrorValues) => {
     //@ts-ignore
     const errorType = errors && errors[label]?.type
     if (errorType === 'required')
-      return <ErrorText>{title} is required</ErrorText>
+      return <FormErrorMessage>{title} is required</FormErrorMessage>
     if (errorType === 'minLength')
-      return <ErrorText>Too short {label.toLowerCase()}</ErrorText>
-    if (errorType === 'maxLength')
-      return <ErrorText>Too long {label.toLowerCase()}</ErrorText>
-    else
       return (
-        <Text fontSize="sm" color="gray.2" mt={2}>
-          {requirmentsText}
-        </Text>
+        <FormErrorMessage>Too short {label.toLowerCase()}</FormErrorMessage>
       )
+    if (errorType === 'maxLength')
+      return <FormErrorMessage>Too long {label.toLowerCase()}</FormErrorMessage>
+    else return <FormHelperText>{requirements}</FormHelperText>
   }
 
   const loadedFileErrors =
     fileRejections &&
     fileRejections[0]?.errors?.map((error, i) => (
-      <ErrorText key={i}>{error.message}</ErrorText>
+      <FormErrorMessage key={i}>{error.message}</FormErrorMessage>
     ))
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
@@ -158,7 +155,7 @@ const CreateBidPage = () => {
           w="full"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <FormControl>
+          <FormControl isInvalid={!!errors.image}>
             <Input
               as={Box}
               border="1px dashed"
@@ -214,25 +211,25 @@ const CreateBidPage = () => {
               </VStack>
             </Input>
 
-            {errors?.image && <ErrorText>Image is required</ErrorText>}
+            <ErrorMessage label="image" title="Image" requirements="" />
           </FormControl>
-          <FormControl>
+          <FormControl isInvalid={!!errors.title}>
             <FormLabel htmlFor="title">Name</FormLabel>
             <Input
               id="title"
               {...register('title', {
                 required: true,
                 minLength: 2,
-                maxLength: 20,
+                maxLength: 50,
               })}
             />
             <ErrorMessage
               label="title"
               title="Name"
-              requirmentsText="From 2 to 5 symbols"
+              requirements="2-20 symbols"
             />
           </FormControl>
-          <FormControl>
+          <FormControl isInvalid={!!errors.description}>
             <FormLabel htmlFor="description">Description</FormLabel>
             <Textarea
               id="description"
@@ -243,11 +240,11 @@ const CreateBidPage = () => {
             />
             <ErrorMessage
               label="description"
-              title="description"
-              requirmentsText="Max 200 symbols"
+              title="Description"
+              requirements="Maximum 200 symbols"
             />
           </FormControl>
-          <FormControl>
+          <FormControl isInvalid={!!errors.price}>
             <FormLabel htmlFor="price">Price</FormLabel>
             <NumberInput defaultValue={0.01} min={0.01} max={50}>
               <NumberInputField
@@ -263,7 +260,11 @@ const CreateBidPage = () => {
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
-            <ErrorMessage label="price" title="Price" />
+            <ErrorMessage
+              label="price"
+              title="Price"
+              requirements="0.01-50 ETH"
+            />
           </FormControl>
           <Button
             isLoading={submitLoading}

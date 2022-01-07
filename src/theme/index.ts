@@ -12,6 +12,8 @@ import Card from './components/card'
 import Menu from './components/menu'
 import Modal from './components/modal'
 import Table from './components/table'
+import Form from './components/form'
+import FormError from './components/form-error'
 
 const config = {
   initialColorMode: 'light',
@@ -37,6 +39,11 @@ const theme = extendTheme({
       '[class*=chakra-input], [class*=chakra-select]': {
         color: mode('gray.2', 'whiteAlpha.800')(props),
       },
+      ':root .chakra-form-control [aria-invalid=true]': {
+        borderColor: mode('red.500', 'red.300')(props),
+        borderStyle: 'solid',
+        boxShadow: '0 0 0 1px rgba(229, 62, 62, 0.5)',
+      },
     }),
   },
   colors,
@@ -54,6 +61,8 @@ const theme = extendTheme({
     Menu,
     Modal,
     Table,
+    Form,
+    FormError,
   },
 })
 

@@ -37,8 +37,8 @@ const BidsPage = ({ bids, search, page, pagesQuantity }: Props) => {
         items={bids.edges}
         w="full"
         pageInfo={bids.pageInfo}
-        activePage={page}
-        pagesQuantity={pagesQuantity}
+        activePage={Number(page)}
+        pagesQuantity={Number(pagesQuantity)}
       />
     </InnerPageContainer>
   )

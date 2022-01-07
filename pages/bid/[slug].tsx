@@ -18,6 +18,8 @@ import {
   useDisclosure,
   useColorModeValue,
 } from '@chakra-ui/react'
+import { SITE_NAME } from '@/constants/main'
+import Head from '@/components/layout/head'
 import AuthorAvatar from '@/components/authors/author-avatar'
 import SectionTitle from '@/components/section-title'
 import Image from '@/components/image'
@@ -49,6 +51,10 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
   }
   return (
     <Container alignItems="flex-start">
+      <Head
+        title={bidDetails.title as string}
+        description={bidDetails.description || SITE_NAME}
+      />
       <SimpleGrid columns={{ md: 2 }} spacing={0}>
         <Box
           pt={V_SPACING_BETWEEN_PAGE_SECTIONS}
@@ -80,7 +86,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
           borderLeftWidth={{ md: 3 }}
           flex={1}
         >
-          <SectionTitle title="Abstact Smoke Red Blue" mb={0} />
+          <SectionTitle title={bidDetails.title as string} mb={0} />
           <Text>
             From{' '}
             <Text fontWeight="bold" as="span">

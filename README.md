@@ -1,6 +1,6 @@
 # CryptoKet ✨
 
-> NFT Marketplace
+> It looks like NFT Marketplace, but it's not NFT Marketplace 😁
 
 ## Tech and tools used
 
@@ -18,7 +18,7 @@
 - [x] Search for all bids and author bids
 - [x] Sort bids by price and date
 - [x] Login with metamask (client-side only)
-- [ ] Upload item page
+- [x] Upload item page
 
 ## Preview 👀
 
