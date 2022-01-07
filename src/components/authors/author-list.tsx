@@ -55,8 +55,6 @@ const NextButton = ({ enabled, onClick }: CarouselButtonsProps) => {
 }
 
 const AuthorList = ({ items }: Props) => {
-  const { isLargeScreen } = useBreakpoint()
-
   const [viewportRef, embla] = useEmblaCarousel({
     align: 'start',
     slidesToScroll: 5,
@@ -77,8 +75,6 @@ const AuthorList = ({ items }: Props) => {
     if (!embla) return
     onSelect()
     embla.on('select', onSelect)
-    setPrevBtnEnabled(embla.canScrollPrev())
-    setNextBtnEnabled(embla.canScrollNext())
   }, [embla, onSelect])
 
   if (!items.length) return <EmptyData />

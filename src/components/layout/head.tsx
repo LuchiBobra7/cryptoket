@@ -2,14 +2,11 @@ import HeadComponent from 'next/head'
 import { SITE_NAME, SITE_DESCRIPTION } from '@/constants/main'
 import { HeadProps } from '@/types/head'
 
-const Head = ({
-  title = SITE_NAME,
-  description = SITE_DESCRIPTION,
-}: HeadProps) => {
+const Head = ({ title, description = SITE_DESCRIPTION }: HeadProps) => {
   return (
     <HeadComponent>
       <title>
-        {title}
+        {title?.length ? title : SITE_NAME}
         {!!description.length ? ` | ${description}` : null}
       </title>
       <meta charSet="utf-8" />

@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import { Container, VStack } from '@chakra-ui/react'
+import { SITE_NAME } from '@/constants/main'
+import Head from '@/components/layout/head'
 import SearchAndFiltersPanel from '@/components/search-and-filters-panel'
 import SearchBar from '@/components/search-bar'
 import ErrorMessage from '@/components/error-message'
@@ -32,6 +34,7 @@ const AuthorPage = ({ authorDetails, bids, page, pagesQuantity }: Props) => {
 
   return (
     <>
+      <Head title={authorDetails?.name as string} description={SITE_NAME} />
       <AuthorDetails authorDetails={authorDetails} />
       <Container
         as={VStack}
@@ -45,8 +48,8 @@ const AuthorPage = ({ authorDetails, bids, page, pagesQuantity }: Props) => {
           w="full"
           items={bids.edges}
           pageInfo={bids.pageInfo}
-          activePage={page}
-          pagesQuantity={pagesQuantity}
+          activePage={Number(page)}
+          pagesQuantity={Number(pagesQuantity)}
         />
       </Container>
     </>
