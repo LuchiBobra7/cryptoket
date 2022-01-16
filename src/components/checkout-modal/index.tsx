@@ -45,7 +45,7 @@ const CheckoutModal = ({ bidDetails, isOpen, onClose }: Props) => {
           >
             Check Out
           </ModalHeader>
-          <ModalBody py={6} overflowX="scroll">
+          <ModalBody py={6} overflowX={{ base: 'scroll', md: 'auto' }}>
             <Table variant="unstyled">
               <Thead>
                 <Tr>

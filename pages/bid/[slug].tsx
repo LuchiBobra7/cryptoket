@@ -49,6 +49,8 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
   if (!bidDetails) {
     return <ErrorMessage />
   }
+
+  const detailsTextColor = useColorModeValue('gray.2', 'whiteAlpha.700')
   return (
     <Container alignItems="flex-start">
       <Head
@@ -113,7 +115,7 @@ const BidDetailsPage = ({ bidDetails }: Props) => {
 
             <TabPanels>
               <TabPanel px={0}>
-                <Text color="gray.2" lineHeight="1.54">
+                <Text color={detailsTextColor} lineHeight="1.54">
                   {bidDetails.description ||
                     `Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's

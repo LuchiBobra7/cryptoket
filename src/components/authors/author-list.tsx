@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Grid, IconButton, Box } from '@chakra-ui/react'
+import { Grid, IconButton, Box, IconButtonProps } from '@chakra-ui/react'
 import useEmblaCarousel from 'embla-carousel-react'
 import AuthorItem from './author-item'
 import { AUTHORS_PER_PAGE } from '@/constants/items'
@@ -24,31 +24,39 @@ const styles = {
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
+  display: { base: 'none', lg: 'block' },
 }
 
-const PrevButton = ({ enabled, onClick }: CarouselButtonsProps) => (
+const CarouselButton = ({ enabled, onClick, ...props }: any) => (
   <IconButton
-    aria-label="arrow-left"
+    aria-label="arrow"
     __css={styles}
-    left={0}
-    ml={-1}
-    display={{ base: 'none', lg: 'block' }}
+    enabled={enabled}
     onClick={onClick}
     opacity={enabled ? 0.7 : 0}
+    {...props}
+  />
+)
+
+const PrevButton = ({ enabled, onClick }: CarouselButtonsProps) => (
+  <CarouselButton
+    aria-label="arrow-left"
+    left={0}
+    ml={-1}
+    enabled={enabled}
+    onClick={onClick}
     icon={<ArrowLeftCircle />}
   />
 )
 
 const NextButton = ({ enabled, onClick }: CarouselButtonsProps) => {
   return (
-    <IconButton
+    <CarouselButton
       aria-label="arrow-right"
-      __css={styles}
       right={0}
       mr={-1}
-      display={{ base: 'none', lg: 'block' }}
+      enabled={enabled}
       onClick={onClick}
-      opacity={enabled ? 0.7 : 0}
       icon={<ArrowRightCircle />}
     />
   )
@@ -57,6 +65,7 @@ const NextButton = ({ enabled, onClick }: CarouselButtonsProps) => {
 const AuthorList = ({ items }: Props) => {
   const [viewportRef, embla] = useEmblaCarousel({
     align: 'start',
+    skipSnaps: false,
     slidesToScroll: 5,
   })
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
