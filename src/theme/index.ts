@@ -5,6 +5,7 @@ import typography from './typography'
 import colors from './colors'
 import sizes from './sizes'
 import Container from './components/container'
+import Link from './components/link'
 import Button from './components/button'
 import Input from './components/input'
 import Textarea from './components/textarea'
@@ -20,6 +21,12 @@ const config = {
   useSystemColorMode: false,
 }
 const { fonts, fontSizes, Heading } = typography
+
+const inputBorder = (props: Dict) => ({
+  _focus: {
+    borderColor: mode('pink.300', 'pink.600')(props),
+  },
+})
 
 const theme = extendTheme({
   config,
@@ -51,6 +58,7 @@ const theme = extendTheme({
   fontSizes,
   sizes,
   components: {
+    Link,
     Button,
     Input,
     Select: Input,

@@ -103,7 +103,7 @@ const SearchBar: FC<Props> = ({ isLocal, isFullWidth, ...props }) => {
       maxW={{ lg: !isFullWidth ? '2xl' : 'full' }}
       ref={internalRef}
     >
-      <Menu matchWidth isLazy isOpen={isOpenMenu} offset={[0, 4]}>
+      <Menu matchWidth isOpen={isOpenMenu} offset={[0, 4]}>
         <MenuButton as={Box} w="full" onClick={(e) => e.preventDefault()}>
           <InputGroup pointerEvents="visible">
             <InputLeftElement

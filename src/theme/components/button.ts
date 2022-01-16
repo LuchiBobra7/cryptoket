@@ -1,9 +1,12 @@
 import { sizes } from './form-element'
+import { pinkRing } from './additional'
+import { Dict } from '@chakra-ui/utils'
 
 const Button = {
-  baseStyle: {
+  baseStyle: (props: Dict) => ({
     fontWeight: 'bold',
-  },
+    ...pinkRing(props),
+  }),
   sizes: {
     md: {
       ...sizes.md,

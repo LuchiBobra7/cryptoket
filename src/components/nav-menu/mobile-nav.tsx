@@ -1,10 +1,18 @@
-import { VStack, Container, List, ListItem, Box } from '@chakra-ui/react'
+import {
+  VStack,
+  Container,
+  List,
+  ListItem,
+  Box,
+  useColorModeValue,
+} from '@chakra-ui/react'
 import { HEADER_HEIGHT } from '@/constants/layout'
 import HeaderButtons from '@/components/layout/header/buttons'
 import navItems from './nav-data'
 import NavLink from './nav-link'
 
 const NavMenu = () => {
+  const bgColor = useColorModeValue('whiteAlpha.900', 'black.1')
   return (
     <VStack
       flex={1}
@@ -13,8 +21,9 @@ const NavMenu = () => {
       top={HEADER_HEIGHT}
       left={0}
       right={0}
-      //height={`calc(100vh - ${HEADER_HEIGHT}px)`}
-      background="white"
+      background={bgColor}
+      borderTopWidth={2}
+      boxShadow="2xl"
     >
       <List flex={1} spacing={5} as="nav" py={10}>
         {navItems.map((item, i) => (

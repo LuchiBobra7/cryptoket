@@ -6,7 +6,6 @@ import Layout from 'src/components/layout'
 import { UserProvider } from '@/context/index'
 import './index.css'
 
-console.log(theme.components)
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <UserProvider>

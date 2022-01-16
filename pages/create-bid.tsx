@@ -50,9 +50,9 @@ const CreateBidPage = () => {
   const {
     register,
     clearErrors,
+    setValue,
     formState: { errors },
     handleSubmit,
-    reset,
   } = useForm<FormValues>()
 
   const { fileRejections, getRootProps, getInputProps } = useDropzone({
@@ -65,6 +65,8 @@ const CreateBidPage = () => {
         setUploadedFile(
           Object.assign(file, { preview: URL?.createObjectURL(file) })
         )
+
+        setValue('image', file?.preview)
 
         clearErrors(['image'])
       }
@@ -97,9 +99,11 @@ const CreateBidPage = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setSubmitLoading(true)
+
     let formData = new FormData()
     formData.append('fileUpload', uploadedFile)
     const result = await uploadFile(formData)
+
     if (!!result?.id) {
       createBid(data?.title, data?.description, Number(data?.price), result?.id)
         .then(() => {
@@ -132,9 +136,10 @@ const CreateBidPage = () => {
       })
     }
     setSubmitLoading(false)
-
+    setValue('image', '')
+    setValue('title', '')
     setUploadedFile(null)
-    reset(result as any)
+    //console.log(formState)
   }
 
   useEffect(
