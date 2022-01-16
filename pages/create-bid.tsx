@@ -61,12 +61,11 @@ const CreateBidPage = () => {
     maxSize: 104857600,
     onDrop: (acceptedFiles) => {
       const file = acceptedFiles[0]
+      const preview = URL?.createObjectURL(file)
       if (!!file) {
-        setUploadedFile(
-          Object.assign(file, { preview: URL?.createObjectURL(file) })
-        )
+        setUploadedFile(Object.assign(file, { preview }))
 
-        setValue('image', file?.preview)
+        setValue('image', preview)
 
         clearErrors(['image'])
       }
