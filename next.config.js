@@ -8,6 +8,6 @@ module.exports = {
     GRAPHCMS_TOKEN: process.env.GRAPHCMS_TOKEN,
   },
   images: {
-    domains: ['media.graphcms.com'],
+    domains: ['media.graphcms.com', 'media.graphassets.com'],
   },
 }

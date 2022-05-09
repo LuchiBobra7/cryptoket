@@ -4250,6 +4250,8 @@ export enum _MutationKind {
   deleteMany = 'deleteMany',
   publish = 'publish',
   publishMany = 'publishMany',
+  schedulePublish = 'schedulePublish',
+  scheduleUnpublish = 'scheduleUnpublish',
   unpublish = 'unpublish',
   unpublishMany = 'unpublishMany',
   update = 'update',
